@@ -2,46 +2,42 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  // ── Botão Voltar ao Topo ──────────────────────────────────────────────
+  // ── Botão Voltar ao Topo ─────────────────────────────────────────────────
   const backToTopBtn = document.getElementById("back-to-top");
-
   if (backToTopBtn) {
     window.addEventListener("scroll", function () {
       backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
     });
-
     backToTopBtn.addEventListener("click", function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
-  // ── Destacar capítulo atual no sumário (index.html) ───────────────────
-  // Compara o href de cada link do sumário com a URL atual
-  const summaryLinks = document.querySelectorAll(".summary-nav a");
-  summaryLinks.forEach(function (link) {
+  // ── Destacar link ativo no sumário ───────────────────────────────────────
+  document.querySelectorAll(".summary-nav a").forEach(function (link) {
     if (link.href === window.location.href) {
       link.style.fontWeight = "bold";
       link.style.color = "#003d99";
     }
   });
 
-  // ── Progresso de leitura (localStorage) ──────────────────────────────
-  // Salva a última página visitada para você poder retomar depois
+  // ── Salvar progresso de leitura (localStorage) ───────────────────────────
   const currentPage = window.location.pathname;
-  if (currentPage.includes("/capitulos/")) {
+  if (currentPage.includes("/capitulos/") || currentPage.includes("/paginas/")) {
     localStorage.setItem("ultimaPaginaLida", window.location.href);
   }
 
-  // Para retomar a leitura, você pode adicionar um botão na index.html:
+  // Para usar o progresso salvo, adicione na index.html um botão com id="btn-continuar"
+  // e descomente as linhas abaixo:
   // const ultima = localStorage.getItem("ultimaPaginaLida");
-  // if (ultima) { document.getElementById("btn-continuar").href = ultima; }
+  // const btnContinuar = document.getElementById("btn-continuar");
+  // if (ultima && btnContinuar) { btnContinuar.href = ultima; btnContinuar.style.display = "inline-block"; }
 
   /*
-    Funcionalidades futuras que você pode adicionar aqui:
-    - Modo escuro: toggle no header que alterna uma classe no <body>
-    - Ajuste de tamanho de fonte pelo leitor (botões A- / A+)
-    - Barra de progresso de leitura no topo da página
-    - Busca no texto (Ctrl+F nativo já funciona, mas pode customizar)
+    Funcionalidades futuras:
+    - Modo escuro: toggle no header que alterna classe .dark no <body>
+    - Ajuste de fonte: botões A- / A+ que alteram font-size no body
+    - Barra de progresso de leitura no topo
   */
 
 });
