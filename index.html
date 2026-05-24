@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meretrício Na Vida Real — Laura Luxx</title>
-  <link rel="stylesheet" href="assets/style.css?v=2.0">
+  <link rel="stylesheet" href="assets/style.css?v=3.0">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -13,24 +13,63 @@
 
     <div class="capa-esquerda">
       
-      <div class="cenario-animado">
-        <div class="ceu-estrelado"></div>
-        
-        <div class="aurora-dourada"></div>
-
-        <svg class="cidade-silhueta" viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <div class="cenario-pov">
+        <svg class="canvas-cenario" viewBox="0 0 800 1200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="grad-cidade-fundo" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#2b0f16" />
-              <stop offset="100%" stop-color="#0a0305" />
+            <filter id="bokeh-suave"><feGaussianBlur stdDeviation="8"/></filter>
+            <filter id="bokeh-forte"><feGaussianBlur stdDeviation="25"/></filter>
+            <filter id="luz-rastro"><feGaussianBlur stdDeviation="4"/></filter>
+            
+            <linearGradient id="grad-silhueta" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#0a0507" />
+              <stop offset="70%" stop-color="#14090c" />
+              <stop offset="100%" stop-color="#240f14" stop-opacity="0.8" />
             </linearGradient>
-            <linearGradient id="grad-cidade-frente" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#1a0a0d" />
-              <stop offset="100%" stop-color="#000000" />
+
+            <linearGradient id="farol-esquerda" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+              <stop offset="50%" stop-color="#ffeedd" stop-opacity="0.6" />
+              <stop offset="100%" stop-color="#b8975a" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="lanterna-direita" x1="100%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#ff1133" stop-opacity="0.8" />
+              <stop offset="60%" stop-color="#b03045" stop-opacity="0.4" />
+              <stop offset="100%" stop-color="#000000" stop-opacity="0" />
             </linearGradient>
           </defs>
-          <path d="M0,200 L0,110 L40,110 L40,150 L90,150 L90,80 L140,80 L140,120 L200,120 L200,60 L260,60 L260,140 L320,140 L320,90 L380,90 L380,160 L450,160 L450,70 L520,70 L520,130 L580,130 L580,50 L650,50 L650,110 L720,110 L720,80 L790,80 L790,140 L850,140 L850,60 L920,60 L920,120 L1000,120 L1000,200 Z" fill="url(#grad-cidade-fundo)" opacity="0.7"/>
-          <path d="M0,200 L0,150 L60,150 L60,180 L120,180 L120,130 L180,130 L180,90 L240,90 L240,160 L300,160 L300,110 L360,110 L360,170 L420,170 L420,120 L480,120 L480,80 L540,80 L540,150 L600,150 L600,100 L670,100 L670,180 L740,180 L740,130 L800,130 L800,90 L880,90 L880,160 L950,160 L950,140 L1000,140 L1000,200 Z" fill="url(#grad-cidade-frente)"/>
+
+          <rect width="800" height="1200" fill="#070405"/>
+          <circle cx="400" cy="600" r="600" fill="url(#grad-silhueta)" opacity="0.4" filter="url(#bokeh-forte)" />
+
+          <path d="M 0 0 L 250 550 L 250 650 L 0 1200 Z" fill="#12090b" opacity="0.85" filter="url(#bokeh-suave)" />
+          <path d="M 800 0 L 550 550 L 550 650 L 800 1200 Z" fill="#0f0709" opacity="0.9" filter="url(#bokeh-suave)" />
+
+          <g fill="#b8975a" opacity="0.25" filter="url(#bokeh-suave)">
+            <rect x="30" y="200" width="15" height="30" />
+            <rect x="60" y="250" width="12" height="25" />
+            <rect x="40" y="400" width="15" height="35" />
+            <rect x="720" y="300" width="14" height="28" />
+            <rect x="750" y="450" width="16" height="32" />
+          </g>
+
+          <path d="M-50 1200 L 360 600 L 390 600 L 150 1200 Z" fill="url(#farol-esquerda)" filter="url(#luz-rastro)" />
+          <path d="M 50 1200 L 370 600 L 385 600 L 220 1200 Z" fill="url(#farol-esquerda)" opacity="0.7" filter="url(#luz-rastro)" />
+          
+          <path d="M 850 1200 L 440 600 L 410 600 L 650 1200 Z" fill="url(#lanterna-direita)" filter="url(#luz-rastro)" />
+          <path d="M 750 1200 L 430 600 L 415 600 L 580 1200 Z" fill="url(#lanterna-direita)" opacity="0.6" filter="url(#luz-rastro)" />
+
+          <circle cx="340" cy="580" r="18" fill="#ffffff" opacity="0.3" filter="url(#bokeh-suave)" />
+          <circle cx="460" cy="590" r="14" fill="#ff4455" opacity="0.4" filter="url(#bokeh-suave)" />
+          <circle cx="280" cy="650" r="28" fill="#ffeedd" opacity="0.15" filter="url(#bokeh-suave)" />
+          <circle cx="550" cy="700" r="35" fill="#ff3344" opacity="0.12" filter="url(#bokeh-suave)" />
+          <circle cx="200" cy="500" r="22" fill="#b8975a" opacity="0.2" filter="url(#bokeh-suave)" />
+          <circle cx="620" cy="480" r="18" fill="#ffeebb" opacity="0.15" filter="url(#bokeh-suave)" />
+
+          <g filter="url(#luz-rastro)">
+            <circle cx="520" cy="720" r="45" fill="url(#grad-silhueta)" />
+            <path d="M 430 820 C 430 760, 460 755, 520 755 C 580 755, 610 760, 610 820 L 630 1250 L 410 1250 Z" fill="url(#grad-silhueta)" />
+            <path d="M 432 820 C 435 770, 465 758, 520 758" stroke="rgba(255, 238, 221, 0.15)" stroke-width="2" fill="none" />
+          </g>
         </svg>
       </div>
 
