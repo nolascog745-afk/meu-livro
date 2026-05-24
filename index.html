@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meretrício Na Vida Real — Laura Luxx</title>
-  <link rel="stylesheet" href="assets/style.css?v=4.0">
+  <link rel="stylesheet" href="assets/style.css?v=8.0">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -12,26 +12,29 @@
   <div class="capa">
 
     <div class="capa-esquerda">
-      <svg class="canvas-avenida" viewBox="0 0 800 1200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <rect width="800" height="1200" fill="linear-gradient(to bottom, #0a0507, #1a090c)" />
-        
-        <path d="M0,1200 L0,400 L150,300 L250,450 L350,350 L450,400 L550,250 L650,450 L800,350 L800,1200 Z" fill="#0f0709" />
-        
-        <g fill="#b8975a" opacity="0.6" filter="blur(2px)">
-          <circle cx="50" cy="350" r="4" />
-          <circle cx="200" cy="320" r="3" />
-          <circle cx="600" cy="300" r="5" />
-          <circle cx="750" cy="380" r="4" />
-        </g>
-
-        <path d="M380,600 L100,1200" stroke="#ffffff" stroke-width="8" opacity="0.3" filter="blur(10px)" />
-        <path d="M420,600 L700,1200" stroke="#ff1133" stroke-width="8" opacity="0.3" filter="blur(10px)" />
-
-        <path d="M400,800 C400,700 550,700 550,800 L580,1200 L370,1200 Z" fill="#14090c" />
-      </svg>
+      <div class="cenario-pov">
+        <svg class="canvas-cenario" viewBox="0 0 800 1200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="bokeh"><feGaussianBlur stdDeviation="15"/></filter>
+            <linearGradient id="luz-carro" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fff" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#b8975a" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="grad-silhueta" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#0a0507" />
+              <stop offset="100%" stop-color="#240f14" />
+            </linearGradient>
+          </defs>
+          <rect width="800" height="1200" fill="#070405"/>
+          <path d="M300 600 L100 1200" stroke="url(#luz-carro)" stroke-width="20" opacity="0.4" filter="url(#bokeh)"/>
+          <path d="M500 600 L700 1200" stroke="#b03045" stroke-width="20" opacity="0.4" filter="url(#bokeh)"/>
+          <path d="M400 700 C400 600, 500 600, 500 700 L550 1200 L350 1200 Z" fill="url(#grad-silhueta)" />
+        </svg>
+      </div>
 
       <div class="textos-capa">
-        <h1 class="titulo-livro">Meretrício<span>Na Vida Real</span></h1>
+        <p class="tag-editorial">Um guia sobre autonomia e realidade</p>
+        <h1 class="titulo-livro">Meretrício<span class="subtitulo">Na Vida Real</span></h1>
         <div class="divisor-ouro"></div>
         <p class="assinatura-autora">Laura Luxx</p>
       </div>
@@ -41,11 +44,19 @@
       <nav class="sumario">
         <h2>Sumário</h2>
         <ol>
-          <li><a href="capitulos/capitulo-01.html">A Decisão</a></li>
-          <li><a href="capitulos/capitulo-02.html">Direitos e Lei</a></li>
+          <li class="sem-numero"><a href="capitulos/prefacio.html">Prefácio</a></li>
+          <li class="sem-numero"><a href="capitulos/introducao.html">Introdução</a></li>
+          <li><a href="capitulos/capitulo-01.html">A Decisão: Clareza, Limites e Autocuidado</a></li>
+          <li><a href="capitulos/capitulo-02.html">Direitos e Lei: Proteção Jurídica</a></li>
           <li><a href="capitulos/capitulo-03.html">A Geografia do Trabalho</a></li>
           <li><a href="capitulos/capitulo-04.html">Construindo a Marca</a></li>
           <li><a href="capitulos/capitulo-05.html">Blindagem Pessoal</a></li>
+          <li><a href="capitulos/capitulo-06.html">O Risco Oculto: De Golpes a Falsas Relações</a></li>
+          <li><a href="capitulos/capitulo-07.html">Patrimônio: Organização Financeira</a></li>
+          <li><a href="capitulos/capitulo-08.html">Sucesso em Paz: Equilíbrio Emocional</a></li>
+          <li><a href="capitulos/capitulo-09.html">Redes de Apoio: Equilíbrio Social</a></li>
+          <li><a href="capitulos/capitulo-10.html">Sucesso Pessoal: Construção da Autonomia</a></li>
+          <li class="sem-numero"><a href="capitulos/agradecimentos.html">Agradecimentos</a></li>
         </ol>
       </nav>
     </div>
