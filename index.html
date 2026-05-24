@@ -12,41 +12,29 @@
   <div class="capa">
 
     <div class="capa-esquerda">
-      
-      <div class="cenario-animado">
+      <div class="cenario-container">
+        <div class="estrelas"></div>
         
-        <div class="ceu-estrelas"></div>
+        <div class="cidade-lateral"></div>
 
-        <div class="predio-esq"></div>
-        <div class="predio-dir"></div>
-
-        <div class="avenida-luzes">
-          <div class="rastro r-branco-1"></div>
-          <div class="rastro r-branco-2"></div>
-          <div class="rastro r-branco-3"></div>
-          <div class="rastro r-vermelho-1"></div>
-          <div class="rastro r-vermelho-2"></div>
-          <div class="rastro r-vermelho-3"></div>
+        <div class="trafego">
+          <div class="luz-carro l1"></div>
+          <div class="luz-carro l2"></div>
+          <div class="luz-carro l3"></div>
         </div>
 
-        <div class="silhueta-protagonista">
-          <svg viewBox="0 0 200 500" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+        <div class="silhueta-perfil">
+          <svg viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 80 50 C 60 50 40 70 40 100 C 40 130 60 140 70 180 L 70 400 L 160 400 L 160 250 C 180 220 190 180 180 140 C 170 100 140 90 120 100 L 110 50 Z" 
+                  fill="url(#grad-perfil)" />
             <defs>
-              <linearGradient id="grad-mulher" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#050203" />
-                <stop offset="50%" stop-color="#1a070c" />
+              <linearGradient id="grad-perfil" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#1a050a" />
                 <stop offset="100%" stop-color="#3b0f1a" />
               </linearGradient>
             </defs>
-            <g fill="url(#grad-mulher)">
-              <path d="M 100 30 C 65 30 55 80 60 130 C 65 160 80 150 90 130 C 100 100 110 100 120 130 C 130 150 145 160 150 130 C 155 80 135 30 100 30 Z" />
-              <path d="M 60 120 Q 80 130 100 130 Q 120 130 150 120 Q 165 180 135 250 Q 120 300 145 500 L 55 500 Q 80 300 65 250 Q 35 180 60 120 Z" />
-              <path d="M 65 125 L 160 280" stroke="url(#grad-mulher)" stroke-width="8" fill="none" />
-              <rect x="135" y="260" width="45" height="55" rx="10" />
-            </g>
           </svg>
         </div>
-
       </div>
 
       <div class="textos-capa">
@@ -58,7 +46,6 @@
         <div class="divisor-ouro"></div>
         <p class="assinatura-autora">Laura Luxx</p>
       </div>
-
     </div>
 
     <div class="capa-direita">
@@ -81,9 +68,6 @@
         </ol>
       </nav>
     </div>
-
   </div>
-
 </body>
 </html>
- 
