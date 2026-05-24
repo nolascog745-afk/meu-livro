@@ -9,269 +9,186 @@
 <body>
 
   <div class="capa">
-  <div class="capa-esquerda">
-    
-    <div class="faixa-ceu">
-      <div class="textos-capa">
-        <h1 class="titulo-livro">
-          Meretrício <span class="subtitulo">Na Vida Real</span>
-        </h1>
-        <p class="assinatura-autora">Laura Luxx</p>
+    <!-- Lado esquerdo: capa visual (céu + cidade + título) -->
+    <div class="capa-esquerda">
+      <!-- Faixa de céu limpa com título -->
+      <div class="faixa-ceu">
+        <div class="textos-capa">
+          <p class="tag-editorial">Coleção Independente</p>
+          <h1 class="titulo-livro">
+            Meretrício
+            <span class="subtitulo">Na Vida Real</span>
+          </h1>
+          <div class="divisor-ouro"></div>
+          <p class="assinatura-autora">Laura Luxx</p>
+        </div>
+      </div>
+
+      <!-- Faixa inferior com cidade neon -->
+      <div class="faixa-cidade">
+        <svg class="cidade-neon" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Céu noturno -->
+            <linearGradient id="grad-ceu-noite" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#040716" />
+              <stop offset="40%" stop-color="#081131" />
+              <stop offset="100%" stop-color="#05060c" />
+            </linearGradient>
+
+            <!-- Janelas neon -->
+            <linearGradient id="grad-janela" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ff5ae8" />
+              <stop offset="100%" stop-color="#ffd36b" />
+            </linearGradient>
+
+            <!-- Luzes de rua -->
+            <radialGradient id="grad-luz-rua" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0%" stop-color="#ff8df2" stop-opacity="1" />
+              <stop offset="100%" stop-color="#ff8df2" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+
+          <!-- Céu -->
+          <rect x="0" y="0" width="1200" height="500" fill="url(#grad-ceu-noite)" />
+
+          <!-- Névoa no horizonte -->
+          <rect x="0" y="260" width="1200" height="140" fill="#6a8bff" opacity="0.16" />
+
+          <!-- Camada de prédios distantes -->
+          <g fill="#111b3e" opacity="0.55">
+            <rect x="20"   y="130" width="80"  height="220" />
+            <rect x="130"  y="110" width="70"  height="240" />
+            <rect x="220"  y="90"  width="110" height="260" />
+            <rect x="360"  y="120" width="90"  height="230" />
+            <rect x="480"  y="100" width="80"  height="250" />
+            <rect x="580"  y="80"  width="120" height="270" />
+            <rect x="730"  y="110" width="90"  height="240" />
+            <rect x="850"  y="95"  width="100" height="255" />
+            <rect x="980"  y="120" width="80"  height="230" />
+            <rect x="1080" y="105" width="70"  height="245" />
+          </g>
+
+          <!-- Camada intermediária -->
+          <g fill="#151635" opacity="0.9">
+            <rect x="60"   y="160" width="90"  height="260" />
+            <rect x="180"  y="170" width="110" height="250" />
+            <rect x="330"  y="150" width="100" height="270" />
+            <rect x="460"  y="165" width="80"  height="255" />
+            <rect x="560"  y="150" width="115" height="270" />
+            <rect x="700"  y="160" width="95"  height="260" />
+            <rect x="830"  y="175" width="105" height="245" />
+            <rect x="960"  y="160" width="90"  height="260" />
+          </g>
+
+          <!-- Camada frontal (silhueta) -->
+          <g fill="#070813">
+            <rect x="0"    y="210" width="110" height="290" />
+            <rect x="110"  y="220" width="120" height="280" />
+            <rect x="250"  y="230" width="130" height="270" />
+            <rect x="410"  y="215" width="120" height="285" />
+            <rect x="560"  y="225" width="130" height="275" />
+            <rect x="720"  y="230" width="120" height="270" />
+            <rect x="860"  y="220" width="130" height="280" />
+            <rect x="1010" y="235" width="150" height="265" />
+          </g>
+
+          <!-- Antenas e luzes no topo -->
+          <g fill="#ff5ae8">
+            <rect x="255" y="80"  width="4" height="40" />
+            <circle cx="257" cy="78" r="4" />
+            <rect x="595" y="60"  width="4" height="50" />
+            <circle cx="597" cy="58" r="4" />
+            <rect x="875" y="70"  width="4" height="45" />
+            <circle cx="877" cy="68" r="4" />
+          </g>
+
+          <!-- Janelas neon -->
+          <g fill="url(#grad-janela)" opacity="0.9">
+            <!-- prédio 1 -->
+            <rect x="20"  y="190" width="8" height="14" />
+            <rect x="35"  y="210" width="8" height="14" />
+            <rect x="50"  y="230" width="8" height="14" />
+            <rect x="65"  y="250" width="8" height="14" />
+            <rect x="80"  y="270" width="8" height="14" />
+            <!-- prédio 2 -->
+            <rect x="145" y="200" width="8" height="14" />
+            <rect x="160" y="220" width="8" height="14" />
+            <rect x="175" y="240" width="8" height="14" />
+            <rect x="190" y="260" width="8" height="14" />
+            <rect x="205" y="280" width="8" height="14" />
+            <!-- prédio 3 -->
+            <rect x="290" y="210" width="8" height="14" />
+            <rect x="305" y="230" width="8" height="14" />
+            <rect x="320" y="250" width="8" height="14" />
+            <rect x="335" y="270" width="8" height="14" />
+            <rect x="350" y="290" width="8" height="14" />
+            <!-- prédio 4 -->
+            <rect x="470" y="215" width="8" height="14" />
+            <rect x="485" y="235" width="8" height="14" />
+            <rect x="500" y="255" width="8" height="14" />
+            <rect x="515" y="275" width="8" height="14" />
+            <rect x="530" y="295" width="8" height="14" />
+            <!-- prédio 5 -->
+            <rect x="720" y="220" width="8" height="14" />
+            <rect x="735" y="240" width="8" height="14" />
+            <rect x="750" y="260" width="8" height="14" />
+            <rect x="765" y="280" width="8" height="14" />
+            <rect x="780" y="300" width="8" height="14" />
+            <!-- prédio 6 -->
+            <rect x="890" y="220" width="8" height="14" />
+            <rect x="905" y="240" width="8" height="14" />
+            <rect x="920" y="260" width="8" height="14" />
+            <rect x="935" y="280" width="8" height="14" />
+            <rect x="950" y="300" width="8" height="14" />
+          </g>
+
+          <!-- Rua / canal central -->
+          <g>
+            <path d="M 0 330 L 1200 330 L 1200 500 L 0 500 Z" fill="#050713" />
+            <path d="M 350 330 L 850 330 L 1100 500 L 100 500 Z" fill="#080a1a" />
+            <path d="M 380 340 L 820 340 L 1020 500 L 180 500 Z" fill="#18224a" opacity="0.45" />
+          </g>
+
+          <!-- Luzes de rua -->
+          <g>
+            <rect x="0" y="330" width="1200" height="4" fill="#15172a" />
+            <g>
+              <circle cx="140" cy="340" r="24" fill="url(#grad-luz-rua)" opacity="0.9" />
+              <circle cx="260" cy="348" r="24" fill="url(#grad-luz-rua)" opacity="0.9" />
+              <circle cx="380" cy="355" r="24" fill="url(#grad-luz-rua)" opacity="0.9" />
+            </g>
+            <g>
+              <circle cx="820" cy="355" r="24" fill="url(#grad-luz-rua)" opacity="0.9" />
+              <circle cx="940" cy="348" r="24" fill="url(#grad-luz-rua)" opacity="0.9" />
+              <circle cx="1060" cy="340" r="24" fill="url(#grad-luz-rua)" opacity="0.9" />
+            </g>
+          </g>
+        </svg>
       </div>
     </div>
 
-    <div class="faixa-cidade">
-      <svg class="cidade-neon" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <!-- Céu noturno -->
-    <linearGradient id="grad-ceu-noite" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#040716" />
-      <stop offset="40%" stop-color="#081131" />
-      <stop offset="100%" stop-color="#05060c" />
-    </linearGradient>
-
-    <!-- Névoa/atmosfera ao fundo -->
-    <linearGradient id="grad-nevoa" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="rgba(102, 153, 255, 0.0)" />
-      <stop offset="100%" stop-color="rgba(102, 153, 255, 0.35)" />
-    </linearGradient>
-
-    <!-- Janelas neon -->
-    <linearGradient id="grad-janela" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#ff5ae8" />
-      <stop offset="100%" stop-color="#ffd36b" />
-    </linearGradient>
-
-    <!-- Luzes de rua -->
-    <radialGradient id="grad-luz-rua" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0%" stop-color="#ff8df2" stop-opacity="1" />
-      <stop offset="100%" stop-color="#ff8df2" stop-opacity="0" />
-    </radialGradient>
-  </defs>
-
-  <!-- Céu -->
-  <rect x="0" y="0" width="1200" height="500" fill="url(#grad-ceu-noite)" />
-
-  <!-- Névoa no horizonte -->
-  <rect x="0" y="260" width="1200" height="140" fill="#6a8bff" opacity="0.16" />
-
-  <!-- Camada de prédios distantes (tonalidade mais azul, baixa opacidade) -->
-  <g fill="#111b3e" opacity="0.55">
-    <rect x="20"   y="130" width="80"  height="220" />
-    <rect x="130"  y="110" width="70"  height="240" />
-    <rect x="220"  y="90"  width="110" height="260" />
-    <rect x="360"  y="120" width="90"  height="230" />
-    <rect x="480"  y="100" width="80"  height="250" />
-    <rect x="580"  y="80"  width="120" height="270" />
-    <rect x="730"  y="110" width="90"  height="240" />
-    <rect x="850"  y="95"  width="100" height="255" />
-    <rect x="980"  y="120" width="80"  height="230" />
-    <rect x="1080" y="105" width="70"  height="245" />
-  </g>
-
-  <!-- Camada de prédios intermediários (mais roxo) -->
-  <g fill="#151635" opacity="0.9">
-    <rect x="60"   y="160" width="90"  height="260" />
-    <rect x="180"  y="170" width="110" height="250" />
-    <rect x="330"  y="150" width="100" height="270" />
-    <rect x="460"  y="165" width="80"  height="255" />
-    <rect x="560"  y="150" width="115" height="270" />
-    <rect x="700"  y="160" width="95"  height="260" />
-    <rect x="830"  y="175" width="105" height="245" />
-    <rect x="960"  y="160" width="90"  height="260" />
-  </g>
-
-  <!-- Camada de prédios próximos (quase silhueta) -->
-  <g fill="#070813">
-    <rect x="0"    y="210" width="110" height="290" />
-    <rect x="110"  y="220" width="120" height="280" />
-    <rect x="250"  y="230" width="130" height="270" />
-    <rect x="410"  y="215" width="120" height="285" />
-    <rect x="560"  y="225" width="130" height="275" />
-    <rect x="720"  y="230" width="120" height="270" />
-    <rect x="860"  y="220" width="130" height="280" />
-    <rect x="1010" y="235" width="150" height="265" />
-  </g>
-
-  <!-- Antenas e luzes no topo de alguns prédios -->
-  <g fill="#ff5ae8">
-    <rect x="255" y="80"  width="4" height="40" />
-    <circle cx="257" cy="78" r="4" />
-    <rect x="595" y="60"  width="4" height="50" />
-    <circle cx="597" cy="58" r="4" />
-    <rect x="875" y="70"  width="4" height="45" />
-    <circle cx="877" cy="68" r="4" />
-  </g>
-
-  <!-- Janelas neon em alguns prédios (você pode duplicar/variar à vontade) -->
-  <g fill="url(#grad-janela)" opacity="0.9">
-    <!-- prédio 1 -->
-    <rect x="20"  y="190" width="8" height="14" />
-    <rect x="35"  y="210" width="8" height="14" />
-    <rect x="50"  y="230" width="8" height="14" />
-    <rect x="65"  y="250" width="8" height="14" />
-    <rect x="80"  y="270" width="8" height="14" />
-
-    <!-- prédio 2 -->
-    <rect x="145" y="200" width="8" height="14" />
-    <rect x="160" y="220" width="8" height="14" />
-    <rect x="175" y="240" width="8" height="14" />
-    <rect x="190" y="260" width="8" height="14" />
-    <rect x="205" y="280" width="8" height="14" />
-
-    <!-- prédio 3 -->
-    <rect x="290" y="210" width="8" height="14" />
-    <rect x="305" y="230" width="8" height="14" />
-    <rect x="320" y="250" width="8" height="14" />
-    <rect x="335" y="270" width="8" height="14" />
-    <rect x="350" y="290" width="8" height="14" />
-
-    <!-- prédio 4 -->
-    <rect x="470" y="215" width="8" height="14" />
-    <rect x="485" y="235" width="8" height="14" />
-    <rect x="500" y="255" width="8" height="14" />
-    <rect x="515" y="275" width="8" height="14" />
-    <rect x="530" y="295" width="8" height="14" />
-
-    <!-- prédio 5 -->
-    <rect x="720" y="220" width="8" height="14" />
-    <rect x="735" y="240" width="8" height="14" />
-    <rect x="750" y="260" width="8" height="14" />
-    <rect x="765" y="280" width="8" height="14" />
-    <rect x="780" y="300" width="8" height="14" />
-
-    <!-- prédio 6 -->
-    <rect x="890" y="220" width="8" height="14" />
-    <rect x="905" y="240" width="8" height="14" />
-    <rect x="920" y="260" width="8" height="14" />
-    <rect x="935" y="280" width="8" height="14" />
-    <rect x="950" y="300" width="8" height="14" />
-  </g>
-
-  <!-- Rua / canal central -->
-  <g>
-    <!-- corpo principal -->
-    <path d="
-      M 0 330
-      L 1200 330
-      L 1200 500
-      L 0 500
-      Z
-    " fill="#050713" />
-
-    <!-- perspectiva da rua/canal -->
-    <path d="
-      M 350 330
-      L 850 330
-      L 1100 500
-      L 100 500
-      Z
-    " fill="#080a1a" />
-
-    <!-- reflexo leve/névoa na rua -->
-    <path d="
-      M 380 340
-      L 820 340
-      L 1020 500
-      L 180 500
-      Z
-    " fill="#18224a" opacity="0.45" />
-  </g>
-
-  <!-- Luzes de rua na frente -->
-  <g>
-    <!-- linha inferior -->
-    <rect x="0" y="330" width="1200" height="4" fill="#15172a" />
-    <!-- postes lado esquerdo -->
-    <g>
-      <circle cx="140" cy="340" r="24" fill="url(#grad-luz-rua)" opacity="0.9" />
-      <circle cx="260" cy="348" r="24" fill="url(#grad-luz-rua)" opacity="0.9" />
-      <circle cx="380" cy="355" r="24" fill="url(#grad-luz-rua)" opacity="0.9" />
-    </g>
-    <!-- postes lado direito -->
-    <g>
-      <circle cx="820" cy="355" r="24" fill="url(#grad-luz-rua)" opacity="0.9" />
-      <circle cx="940" cy="348" r="24" fill="url(#grad-luz-rua)" opacity="0.9" />
-      <circle cx="1060" cy="340" r="24" fill="url(#grad-luz-rua)" opacity="0.9" />
-    </g>
-  </g>
-</svg>
-    </div>
-
-  </div>
-
+    <!-- Lado direito: Sumário -->
     <div class="capa-direita">
       <nav class="sumario">
         <h2>Sumário</h2>
         <ol>
-          <li>
-            <a href="capitulos/prefacio.html">
-              Prefácio
-            </a>
-          </li>
-          <li>
-            <a href="capitulos/introducao.html">
-              Introdução
-            </a>
-          </li>
-          <li>
-            <a href="capitulos/capitulo-01.html">
-              Capítulo 1 — A Decisão: Clareza, Limites e Autocuidado
-            </a>
-          </li>
-          <li>
-            <a href="capitulos/capitulo-02.html">
-              Capítulo 2 — Direitos e Lei: Proteção Jurídica na Atividade
-            </a>
-          </li>
-          <li>
-            <a href="capitulos/capitulo-03.html">
-              Capítulo 3 — A Geografia do Trabalho: Locais, Sites e Riscos
-            </a>
-          </li>
-          <li>
-            <a href="capitulos/capitulo-04.html">
-              Capítulo 4 — Construindo a Marca: Autocuidado e Fidelização
-            </a>
-          </li>
-          <li>
-            <a href="capitulos/capitulo-05.html">
-              Capítulo 5 — Blindagem Pessoal: Saúde, Prevenção e Limites
-            </a>
-          </li>
-          <li>
-            <a href="capitulos/capitulo-06.html">
-              Capítulo 6 — O Risco Oculto: De Golpes a Falsas Relações
-            </a>
-          </li>
-          <li>
-            <a href="capitulos/capitulo-07.html">
-              Capítulo 7 — Patrimônio: Organização Financeira e Primeiros Investimentos
-            </a>
-          </li>
-          <li>
-            <a href="capitulos/capitulo-08.html">
-              Capítulo 8 — Sucesso em Paz: Equilíbrio Emocional e Riqueza
-            </a>
-          </li>
-          <li>
-            <a href="capitulos/capitulo-09.html">
-              Capítulo 9 — Redes de Apoio: Equilíbrio Social e Histórias Reais
-            </a>
-          </li>
-          <li>
-            <a href="capitulos/capitulo-10.html">
-              Capítulo 10 — Sucesso Pessoal: A Construção da Autonomia
-            </a>
-          </li>
-          <li>
-            <a href="capitulos/agradecimentos.html">
-              Agradecimentos
-            </a>
-          </li>
+          <li><a href="capitulos/prefacio.html">Prefácio</a></li>
+          <li><a href="capitulos/introducao.html">Introdução</a></li>
+          <li><a href="capitulos/capitulo-01.html">Capítulo 1 — A Decisão: Clareza, Limites e Autocuidado</a></li>
+          <li><a href="capitulos/capitulo-02.html">Capítulo 2 — Direitos e Lei: Proteção Jurídica na Atividade</a></li>
+          <li><a href="capitulos/capitulo-03.html">Capítulo 3 — A Geografia do Trabalho: Locais, Sites e Riscos</a></li>
+          <li><a href="capitulos/capitulo-04.html">Capítulo 4 — Construindo a Marca: Autocuidado e Fidelização</a></li>
+          <li><a href="capitulos/capitulo-05.html">Capítulo 5 — Blindagem Pessoal: Saúde, Prevenção e Limites</a></li>
+          <li><a href="capitulos/capitulo-06.html">Capítulo 6 — O Risco Oculto: De Golpes a Falsas Relações</a></li>
+          <li><a href="capitulos/capitulo-07.html">Capítulo 7 — Patrimônio: Organização Financeira e Primeiros Investimentos</a></li>
+          <li><a href="capitulos/capitulo-08.html">Capítulo 8 — Sucesso em Paz: Equilíbrio Emocional e Riqueza</a></li>
+          <li><a href="capitulos/capitulo-09.html">Capítulo 9 — Redes de Apoio: Equilíbrio Social e Histórias Reais</a></li>
+          <li><a href="capitulos/capitulo-10.html">Capítulo 10 — Sucesso Pessoal: A Construção da Autonomia</a></li>
+          <li class="sem-numero"><a href="capitulos/agradecimentos.html">Agradecimentos</a></li>
         </ol>
       </nav>
     </div>
   </div>
+
 </body>
 </html>
