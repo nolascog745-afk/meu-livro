@@ -167,7 +167,53 @@ body {
 }
 
 /* =========================
-   CAPÍTULOS - LAYOUT
+   CABEÇALHO DAS PÁGINAS INTERNAS
+   ========================= */
+
+.cabecalho-livro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #050717;
+  border-bottom: 1px solid rgba(184,151,90,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.link-voltar {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: #B8975A;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.link-voltar:hover {
+  color: #FAF3F0;
+}
+
+.cabecalho-livro__obra {
+  font-family: 'DM Serif Display', serif;
+  font-size: 0.95rem;
+  color: #FAF3F0;
+  text-align: center;
+  flex: 1;
+}
+
+.cabecalho-livro__autora {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 1.4rem;
+  color: #B8975A;
+  text-align: right;
+}
+
+/* =========================
+   CAPÍTULOS - LAYOUT (classes antigas)
    ========================= */
 
 .capitulo {
@@ -235,6 +281,104 @@ body {
 }
 
 /* =========================
+   PÁGINAS INTERNAS (prefácio, introdução, agradecimentos)
+   ========================= */
+
+body.pagina-capitulo {
+  background: #FAF3F0;
+}
+
+.conteudo-capitulo {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+.rotulo-capitulo {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #9B2335;
+  margin-bottom: 0.75rem;
+}
+
+.titulo-capitulo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem;
+  line-height: 1.2;
+  color: #121212;
+  margin-bottom: 2.5rem;
+}
+
+.titulo-capitulo::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: #B8975A;
+  margin-top: 1.2rem;
+}
+
+.texto-capitulo p {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.texto-capitulo ul,
+.texto-capitulo ol {
+  margin: 0 0 1.5rem 1.5rem;
+}
+
+.texto-capitulo li {
+  margin-bottom: 0.4rem;
+}
+
+.texto-capitulo .epigrafe {
+  margin-bottom: 2.5rem;
+}
+
+/* Bloco de texto */
+.bloco-texto {
+  margin-bottom: 3rem;
+}
+
+/* =========================
+   NAVEGAÇÃO ENTRE CAPÍTULOS
+   ========================= */
+
+.navegacao,
+.navegacao-capitulos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(155, 35, 53, 0.15);
+  gap: 1rem;
+}
+
+.navegacao a,
+.navegacao-capitulos a,
+.nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #9B2335;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+
+.navegacao a:hover,
+.navegacao-capitulos a:hover,
+.nav-link:hover {
+  color: #B8975A;
+}
+
+/* =========================
    AVISO DE EMERGÊNCIA
    ========================= */
 
@@ -252,34 +396,6 @@ body {
 .aviso-emergencia strong {
   font-size: 1.1rem;
   letter-spacing: 0.05em;
-}
-
-/* =========================
-   NAVEGAÇÃO ENTRE CAPÍTULOS
-   ========================= */
-
-.navegacao {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 3.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(155, 35, 53, 0.15);
-  gap: 1rem;
-}
-
-.navegacao a {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: #9B2335;
-  text-decoration: none;
-  letter-spacing: 0.03em;
-  transition: color 0.2s;
-}
-
-.navegacao a:hover {
-  color: #B8975A;
 }
 
 /* =========================
@@ -309,17 +425,32 @@ body {
     font-size: 2.4rem;
   }
 
-  .capitulo {
+  .capitulo,
+  .conteudo-capitulo {
     padding: 3rem 1.25rem 4rem;
   }
 
-  .capitulo-titulo {
+  .capitulo-titulo,
+  .titulo-capitulo {
     font-size: 1.75rem;
   }
 
-  .navegacao {
+  .navegacao,
+  .navegacao-capitulos {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
+  }
+
+  .cabecalho-livro {
+    padding: 0.75rem 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .cabecalho-livro__obra {
+    text-align: left;
+    flex: none;
   }
 }
