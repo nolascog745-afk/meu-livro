@@ -10,7 +10,7 @@
   --terracota:   #C4737A;
   --creme:       #FAF3F0;
   --branco:      #FFFFFF;
-  --carvao:      #121212; /* Ajustado para um escuro mais profundo de noite */
+  --carvao:      #121212;
   --dourado:     #B8975A;
   --vinheta:     rgba(155, 35, 53, 0.06);
 
@@ -35,19 +35,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── ANIMAÇÕES DO CENÁRIO ───────────────────────────── */
-@keyframes piscarEstrelas {
-  0% { opacity: 0.8; }
-  50% { opacity: 0.2; }
-  100% { opacity: 0.9; }
-}
-
-@keyframes pulsarAurora {
-  0% { transform: translateX(-50%) scale(1) translateY(0); opacity: 0.4; }
-  50% { transform: translateX(-50%) scale(1.15) translateY(-20px); opacity: 0.7; }
-  100% { transform: translateX(-50%) scale(1) translateY(0); opacity: 0.4; }
-}
-
 /* ─── CAPA E SUMÁRIO (PC) ────────────────────────────── */
 .capa {
   display: grid;
@@ -55,8 +42,7 @@ body {
 }
 
 .capa-esquerda {
-  /* Fundo noturno que desce para um tom profundo de vinho */
-  background: linear-gradient(180deg, #0a0a0a 0%, #1a0a0d 60%, var(--vinho) 150%);
+  background: #050203;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,73 +57,176 @@ body {
   z-index: 1;
 }
 
-/* ─── ESTRUTURA DO CENÁRIO ───────────────────────────── */
+/* ─── ANIMAÇÕES DO CENÁRIO ───────────────────────────── */
+@keyframes piscarEstrelas {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.9; }
+}
+
+@keyframes pulsarBokeh {
+  0% { opacity: 0.3; transform: scale(0.8) translate(-50%, -50%); }
+  100% { opacity: 0.8; transform: scale(1.2) translate(-50%, -50%); }
+}
+
+@keyframes moverRastro {
+  0% { background-position: 0% -150%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { background-position: 0% 150%; opacity: 0; }
+}
+
+@keyframes respirarSilhueta {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-10px) scale(1.02); }
+}
+
+/* ─── ESTRUTURA DO CENÁRIO EM GRADIENTES ─────────────── */
 .cenario-animado {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0; width: 100%; height: 100%;
   z-index: 0;
   pointer-events: none;
 }
 
-/* Estrelas (Geradas com CSS radial-gradient) */
-.ceu-estrelado {
-  position: absolute;
-  inset: 0;
+.ceu-estrelas {
+  position: absolute; inset: 0; z-index: 1;
   background-image: 
-    radial-gradient(1.5px 1.5px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-    radial-gradient(1.5px 1.5px at 140px 70px, rgba(255,255,255,0.8), rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 90px 140px, #ffffff, rgba(0,0,0,0)),
-    radial-gradient(1.5px 1.5px at 260px 120px, rgba(255,255,255,0.6), rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 300px 300px;
-  animation: piscarEstrelas 5s infinite alternate ease-in-out;
-  opacity: 0.7;
+    radial-gradient(1px 1px at 40px 60px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 150px 120px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 280px 40px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 350px 180px, rgba(255,255,255,0.4), transparent);
+  background-size: 400px 400px;
+  animation: piscarEstrelas 4s infinite alternate;
 }
 
-/* Camada extra de estrelas com movimento diferente */
-.ceu-estrelado::after {
-  content: '';
+.horizonte-iluminado {
   position: absolute;
-  inset: 0;
-  background-image: 
-    radial-gradient(1px 1px at 50px 50px, #ffffff, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 200px 180px, rgba(255,255,255,0.5), rgba(0,0,0,0));
-  background-size: 250px 250px;
-  animation: piscarEstrelas 7s infinite alternate-reverse ease-in-out;
-}
-
-/* A Aurora / Luz Ascendente */
-.aurora-dourada {
-  position: absolute;
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  height: 60%;
-  background: radial-gradient(ellipse at bottom center, var(--dourado) 0%, var(--terracota) 30%, transparent 70%);
-  filter: blur(50px);
-  animation: pulsarAurora 8s infinite ease-in-out;
-  mix-blend-mode: screen;
+  top: 40%; left: 50%;
+  width: 150%; height: 40%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, rgba(184,151,90,0.2) 0%, rgba(155,35,53,0.15) 30%, transparent 60%);
+  filter: blur(30px);
   z-index: 2;
+  animation: pulsarBokeh 6s infinite alternate ease-in-out;
 }
 
-/* A Cidade (Silhueta base) */
-.cidade-silhueta {
+/* Prédios Silhuetas Laterais */
+.predio-esq, .predio-dir {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 28vh; /* Altura da cidade */
+  top: 25%; bottom: 0;
+  width: 45%;
+  background: linear-gradient(180deg, #0a0305 0%, #000 100%);
+  filter: blur(12px);
   z-index: 3;
 }
+.predio-esq {
+  left: -15%;
+  clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
+}
+.predio-dir {
+  right: -15%;
+  clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
+}
 
-/* ─── TEXTOS DA CAPA (TEMA ESCURO) ───────────────────── */
+/* Bokeh - Luzes desfocadas */
+.luzes-cidade {
+  position: absolute; inset: 0; z-index: 4;
+}
+.bokeh {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, rgba(255,200,100,0.8) 30%, transparent 70%);
+  filter: blur(5px);
+  transform: translate(-50%, -50%);
+  animation: pulsarBokeh 3s infinite alternate ease-in-out;
+}
+.bokeh.b1 { top: 48%; left: 45%; width: 30px; height: 30px; animation-delay: 0s; }
+.bokeh.b2 { top: 46%; left: 53%; width: 45px; height: 45px; animation-delay: 1s; }
+.bokeh.b3 { top: 49%; left: 41%; width: 20px; height: 20px; animation-delay: 0.5s; }
+.bokeh.b4 { top: 47%; left: 58%; width: 35px; height: 35px; animation-delay: 1.5s; background: radial-gradient(circle, #fff 0%, rgba(255,50,50,0.8) 30%, transparent 70%); }
+.bokeh.b5 { top: 45%; left: 35%; width: 50px; height: 50px; animation-delay: 0.8s; }
+.bokeh.b6 { top: 50%; left: 62%; width: 25px; height: 25px; animation-delay: 2s; background: radial-gradient(circle, #fff 0%, rgba(255,50,50,0.8) 30%, transparent 70%); }
+
+/* Avenida e Rastros */
+.avenida-rastros {
+  position: absolute;
+  top: 48%; /* Ponto de fuga no centro vertical */
+  left: 0; right: 0; bottom: 0;
+  z-index: 5;
+  overflow: hidden;
+}
+.rastro-base {
+  position: absolute;
+  top: 0; left: 50%;
+  height: 150%;
+  transform-origin: top center;
+  filter: blur(8px);
+  background-size: 100% 200%;
+}
+
+/* Esquerda: Faróis Brancos/Dourados */
+.rastro-base.r1 { 
+  width: 40px; transform: translateX(-50%) rotate(40deg); 
+  background-image: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.9) 50%, transparent 100%);
+  animation: moverRastro 1.8s infinite linear;
+}
+.rastro-base.r2 { 
+  width: 25px; transform: translateX(-50%) rotate(25deg); 
+  background-image: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.7) 50%, transparent 100%);
+  animation: moverRastro 2.2s infinite linear; animation-delay: 0.5s;
+}
+.rastro-base.r3 { 
+  width: 15px; transform: translateX(-50%) rotate(12deg); 
+  background-image: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+  animation: moverRastro 1.5s infinite linear; animation-delay: 1s;
+}
+
+/* Direita: Lanternas Vermelhas */
+.rastro-base.r4 { 
+  width: 40px; transform: translateX(-50%) rotate(-45deg); 
+  background-image: linear-gradient(to bottom, transparent 0%, rgba(255,30,50,0.9) 50%, transparent 100%);
+  animation: moverRastro 2s infinite linear;
+}
+.rastro-base.r5 { 
+  width: 30px; transform: translateX(-50%) rotate(-30deg); 
+  background-image: linear-gradient(to bottom, transparent 0%, rgba(255,50,70,0.8) 50%, transparent 100%);
+  animation: moverRastro 1.6s infinite linear; animation-delay: 0.7s;
+}
+.rastro-base.r6 { 
+  width: 15px; transform: translateX(-50%) rotate(-15deg); 
+  background-image: linear-gradient(to bottom, transparent 0%, rgba(255,40,60,0.6) 50%, transparent 100%);
+  animation: moverRastro 2.4s infinite linear; animation-delay: 0.2s;
+}
+
+/* Silhueta do Homem */
+.silhueta-homem {
+  position: absolute;
+  bottom: -2%; right: 10%;
+  width: 220px; height: 50vh;
+  z-index: 6;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  animation: respirarSilhueta 4s infinite alternate ease-in-out;
+}
+.silhueta-homem .cabeca {
+  width: 70px; height: 90px;
+  border-radius: 50%;
+  background: #080204;
+  box-shadow: inset -10px -10px 20px rgba(0,0,0,0.8), 10px 0 15px rgba(255,50,50,0.2), -5px 0 15px rgba(255,200,100,0.1);
+  filter: blur(4px);
+  margin-bottom: -15px;
+}
+.silhueta-homem .corpo {
+  width: 100%; height: 35vh;
+  border-radius: 100px 100px 0 0;
+  background: #080204;
+  box-shadow: inset -10px -20px 40px rgba(0,0,0,0.8), 15px 0 25px rgba(255,50,50,0.15), -10px 0 20px rgba(255,200,100,0.05);
+  filter: blur(6px);
+}
+
+/* ─── TEXTOS DA CAPA ─────────────────────────────────── */
 .textos-capa {
   position: relative;
-  z-index: 10; /* Garante que os textos flutuem sobre as estrelas e a aurora */
+  z-index: 10;
   padding: 2rem;
   margin-bottom: 5vh;
 }
@@ -147,16 +236,15 @@ body {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.35em;
-  color: rgba(250, 243, 240, 0.7); /* Creme suavizado */
+  color: rgba(250, 243, 240, 0.7);
   margin-bottom: 2.5rem;
 }
 
 .titulo-livro {
   font-family: var(--fonte-titulo);
-  /* CORREÇÃO CRÍTICA DO MOBILE: Encolhe com total segurança em ecrãs estreitos */
   font-size: clamp(1.8rem, 4.2vw, 3.8rem);
   font-weight: 900;
-  color: var(--creme); /* Branco creme brilhante contra a noite */
+  color: var(--creme);
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -170,7 +258,7 @@ body {
   font-weight: 300;
   font-size: clamp(0.85rem, 1.2vw, 1.1rem);
   letter-spacing: 0.4em;
-  color: var(--dourado); /* Dourado brilhante */
+  color: var(--dourado);
   margin-top: 1.5rem;
 }
 
@@ -184,11 +272,11 @@ body {
 .assinatura-autora {
   font-family: var(--fonte-autora);
   font-size: 2.8rem;
-  color: var(--dourado); /* A assinatura vira ouro na nova narrativa */
+  color: var(--dourado);
   opacity: 0.9;
 }
 
-/* ─── LADO DIREITO E RESTANTE DO SITE ────────────────── */
+/* ─── LADO DIREITO (SUMÁRIO) ─────────────────────────── */
 .capa-direita {
   background: var(--branco);
   display: flex;
@@ -212,10 +300,10 @@ body {
   counter-reset: item;
 }
 
-/* CORREÇÃO APLICADA AQUI: Apenas itens SEM a classe .sem-numero recebem numeração */
 .sumario li {
   border-bottom: 1px solid rgba(155,35,53,0.1);
 }
+
 .sumario li:not(.sem-numero) {
   counter-increment: item;
 }
@@ -232,7 +320,6 @@ body {
   transition: color 0.2s;
 }
 
-/* O número só aparece nos itens permitidos pelo CSS acima */
 .sumario li:not(.sem-numero) a::before {
   content: counter(item, decimal-leading-zero);
   font-family: var(--fonte-ui);
@@ -395,45 +482,29 @@ body {
 
 /* ─── RESPONSIVO (MOBILE) ────────────────────────────── */
 @media (max-width: 768px) {
-  .capa { 
-    grid-template-columns: 1fr; 
-  }
+  .capa { grid-template-columns: 1fr; }
   
   .capa-esquerda { 
-    position: relative; /* Desliga o efeito colado no telemóvel */
+    position: relative; 
     height: auto;
     min-height: 100vh;
     min-height: 100svh;
-    padding: 6rem 1rem 4rem 1rem; /* Alivia as margens internas */
+    padding: 6rem 1rem 4rem 1rem; 
   }
 
-  .textos-capa {
-    max-width: 95%; /* Libera mais espaço horizontal para a palavra não cortar */
+  .textos-capa { max-width: 95%; margin-top: 5vh; }
+
+  .silhueta-homem {
+    right: 5%;
+    width: 180px;
+    height: 40vh;
   }
 
-  .titulo-livro {
-    /* Reduz dinamicamente no telemóvel impedindo qualquer transbordo lateral */
-    font-size: clamp(1.8rem, 8.5vw, 2.5rem); 
-  }
+  .titulo-livro { font-size: clamp(1.8rem, 8.5vw, 2.5rem); }
+  .subtitulo { font-size: 0.8rem; letter-spacing: 0.3em; }
+  .assinatura-autora { font-size: 2.3rem; }
 
-  .subtitulo {
-    font-size: 0.8rem;
-    letter-spacing: 0.3em;
-  }
-
-  .assinatura-autora {
-    font-size: 2.3rem;
-  }
-
-  .capa-direita { 
-    padding: 4rem 1.5rem; 
-  }
-  
-  .capitulo { 
-    padding: 3rem 1.2rem 4rem; 
-  }
-  
-  .capitulo::before {
-    position: absolute;
-  }
+  .capa-direita { padding: 4rem 1.5rem; }
+  .capitulo { padding: 3rem 1.2rem 4rem; }
+  .capitulo::before { position: absolute; }
 }
