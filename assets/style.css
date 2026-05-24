@@ -153,12 +153,14 @@ body {
 
 .titulo-livro {
   font-family: var(--fonte-titulo);
-  font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+  /* CORREÇÃO CRÍTICA DO MOBILE: Encolhe com total segurança em ecrãs estreitos */
+  font-size: clamp(1.8rem, 4.2vw, 3.8rem);
   font-weight: 900;
   color: var(--creme); /* Branco creme brilhante contra a noite */
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.02em;
+  word-wrap: break-word;
   margin-bottom: 0;
 }
 
@@ -166,7 +168,7 @@ body {
   display: block;
   font-family: var(--fonte-ui);
   font-weight: 300;
-  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  font-size: clamp(0.85rem, 1.2vw, 1.1rem);
   letter-spacing: 0.4em;
   color: var(--dourado); /* Dourado brilhante */
   margin-top: 1.5rem;
@@ -210,9 +212,12 @@ body {
   counter-reset: item;
 }
 
+/* CORREÇÃO APLICADA AQUI: Apenas itens SEM a classe .sem-numero recebem numeração */
 .sumario li {
-  counter-increment: item;
   border-bottom: 1px solid rgba(155,35,53,0.1);
+}
+.sumario li:not(.sem-numero) {
+  counter-increment: item;
 }
 
 .sumario li a {
@@ -227,7 +232,8 @@ body {
   transition: color 0.2s;
 }
 
-.sumario li a::before {
+/* O número só aparece nos itens permitidos pelo CSS acima */
+.sumario li:not(.sem-numero) a::before {
   content: counter(item, decimal-leading-zero);
   font-family: var(--fonte-ui);
   font-size: 0.65rem;
@@ -394,30 +400,29 @@ body {
   }
   
   .capa-esquerda { 
-    position: relative; /* Desliga o sticky no mobile */
+    position: relative; /* Desliga o efeito colado no telemóvel */
     height: auto;
     min-height: 100vh;
     min-height: 100svh;
+    padding: 6rem 1rem 4rem 1rem; /* Alivia as margens internas */
   }
 
   .textos-capa {
-    margin-top: 0;
-  }
-
-  .cidade-silhueta {
-    height: 25vh; /* Ajuste suave da altura dos prédios no celular */
+    max-width: 95%; /* Libera mais espaço horizontal para a palavra não cortar */
   }
 
   .titulo-livro {
-    font-size: 3rem; 
+    /* Reduz dinamicamente no telemóvel impedindo qualquer transbordo lateral */
+    font-size: clamp(1.8rem, 8.5vw, 2.5rem); 
   }
 
   .subtitulo {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
   }
 
   .assinatura-autora {
-    font-size: 2.4rem;
+    font-size: 2.3rem;
   }
 
   .capa-direita { 
