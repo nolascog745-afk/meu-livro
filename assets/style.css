@@ -43,18 +43,13 @@ body {
 
 .capa-esquerda {
   background: var(--creme);
-  background-image: 
-    radial-gradient(circle at 10% 20%, rgba(196, 115, 122, 0.22) 0%, transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(184, 151, 90, 0.18) 0%, transparent 50%),
-    radial-gradient(circle at 50% 90%, rgba(155, 35, 53, 0.08) 0%, transparent 40%);
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centralização vertical precisa */
-  align-items: center;     /* Centralização horizontal precisa */
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 3rem;
   
-  /* Mantém a capa fixa no PC enquanto a direita rola */
+  /* Configuração crucial para suportar a imagem gigante */
   position: sticky;
   top: 0;
   height: 100vh;
@@ -63,8 +58,19 @@ body {
   z-index: 1;
 }
 
-/* Textura de papel aquarela */
-.capa-esquerda::before {
+/* A Imagem Vetorial Gigante que ocupa a Capa Toda */
+.bg-ilustracao {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Faz o desenho se esticar cobrindo tudo */
+  z-index: 0;
+}
+
+/* Textura de ruído por cima da imagem para dar efeito de papel */
+.capa-esquerda::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -72,49 +78,51 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   mix-blend-mode: multiply;
   pointer-events: none;
-  z-index: -1;
+  z-index: 1;
 }
 
 .textos-capa {
-  margin: 0 0 2.5rem 0;
+  position: relative;
+  z-index: 5; /* Garante que o texto fique sempre acima do desenho */
+  padding: 2rem;
 }
 
 .titulo-livro {
   font-family: var(--fonte-titulo);
-  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  font-size: clamp(2.8rem, 4.5vw, 4rem);
   font-weight: 900;
   color: var(--carvao);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  margin-bottom: 1.5rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 0;
+}
+
+.subtitulo {
+  display: block;
+  font-family: var(--fonte-ui);
+  font-weight: 400;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  letter-spacing: 0.4em;
+  color: var(--vinho);
+  margin-top: 1rem;
+}
+
+.divisor-ouro {
+  width: 50px;
+  height: 2px;
+  background-color: var(--dourado);
+  margin: 2rem auto;
 }
 
 .assinatura-autora {
   font-family: var(--fonte-autora);
-  font-size: 2.2rem;
+  font-size: 2.8rem;
   color: var(--vinho);
-  position: relative;
+  margin-top: 0;
 }
 
-.assinatura-autora::before {
-  content: '';
-  display: block;
-  width: 2.5rem;
-  height: 1px;
-  background: var(--dourado);
-  margin: 0 auto 0.8rem auto;
-}
-
-.ilustracao-capa {
-  width: 100%;
-  max-width: 240px;
-  max-height: 35vh; /* Impede a ilustração de esticar ou crescer demais no PC */
-  margin: 0 auto;
-  display: block;
-  position: relative;
-  z-index: 2;
-}
-
+/* ─── LADO DIREITO E RESTANTE DO SITE ────────────────── */
 .capa-direita {
   background: var(--branco);
   display: flex;
@@ -326,20 +334,18 @@ body {
     height: auto;
     min-height: 100vh;
     min-height: 100svh;
-    padding: 6rem 1.5rem 3rem 1.5rem; 
-    justify-content: center;
-    align-items: center; 
   }
 
-  .textos-capa {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 2rem;
+  .titulo-livro {
+    font-size: 2.8rem; 
   }
-  
-  .ilustracao-capa {
-    max-width: 220px;
-    max-height: 35vh;
+
+  .subtitulo {
+    font-size: 0.85rem;
+  }
+
+  .assinatura-autora {
+    font-size: 2.4rem;
   }
 
   .capa-direita { 
