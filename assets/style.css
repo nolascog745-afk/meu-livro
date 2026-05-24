@@ -32,7 +32,6 @@ body {
 
 /* Lado esquerdo: capa visual */
 .capa-esquerda {
-  background: #050203;
   position: sticky;
   top: 0;
   height: 100vh;
@@ -40,12 +39,12 @@ body {
   flex-direction: column;
   overflow: hidden;
   z-index: 1;
+  background: linear-gradient(to bottom, #050717, #101a3a); /* base em degradê, não preto chapado */
 }
 
 /* Faixa superior de céu com título */
 .faixa-ceu {
   flex: 0 0 40%;
-  background: linear-gradient(to bottom, #050717, #101a3a);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,15 +72,6 @@ body {
   color: #B8975A;
   letter-spacing: 0.4em;
   margin-top: 1rem;
-}
-
-.tag-editorial {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  color: rgba(250,243,240,0.7);
-  margin-bottom: 2rem;
 }
 
 .assinatura-autora {
