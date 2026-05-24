@@ -46,8 +46,8 @@ body {
 .capa-esquerda {
   background: var(--creme);
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(196, 115, 122, 0.2) 0%, transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(184, 151, 90, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 10% 20%, rgba(196, 115, 122, 0.22) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(184, 151, 90, 0.18) 0%, transparent 50%),
     radial-gradient(circle at 50% 90%, rgba(155, 35, 53, 0.08) 0%, transparent 40%);
   display: flex;
   flex-direction: column;
@@ -58,7 +58,7 @@ body {
   z-index: 1;
 }
 
-/* Efeito de textura de papel aquarela (ruído SVG invisível) */
+/* Efeito de textura de papel aquarela genuinely textured */
 .capa-esquerda::before {
   content: '';
   position: absolute;
@@ -116,7 +116,7 @@ body {
 
 .ilustracao-capa {
   width: 100%;
-  max-width: 340px;
+  max-width: 380px; /* Aumentado levemente para PC */
   margin: 0 auto;
   display: block;
   position: relative;
@@ -284,7 +284,7 @@ body {
 
 /* aviso de emergência */
 .aviso-emergencia {
-  background: rgba(155,35,53,0.06);
+  background: rgba(155, 35, 53, 0.06);
   border-left: 3px solid var(--vinho);
   padding: 0.8rem 1.2rem;
   font-size: 0.9rem;
@@ -323,3 +323,66 @@ body {
 
 .navegacao a {
   font-family: var(--fonte-ui);
+  font-size: 0.78rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vinho);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.navegacao a:hover { opacity: 0.6; }
+
+/* ─── RESPONSIVO (MOBILE/PC) ─────────────────────────── */
+@media (max-width: 768px) {
+  /* Transforma o grid em uma única coluna */
+  .capa { 
+    grid-template-columns: 1fr; 
+    min-height: auto;
+  }
+  
+  /* CORREÇÃO DE LAYOUT MOBILE: centralização e espaço no topo */
+  .capa-esquerda { 
+    min-height: 100vh;
+    min-height: 100svh; /* Ocupa a tela inteira */
+    padding: 7rem 1.5rem 2rem 1.5rem; /* Aumentado padding do topo e adicionado fundo seguro */
+    justify-content: flex-start; /* Alinha o conteúdo ao início */
+    align-items: center; /* Centraliza horizontalmente */
+  }
+
+  /* Centraliza e dá espaço aos textos no mobile */
+  .textos-capa {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 2rem; /* Espaço antes da ilustração */
+  }
+
+  /* Centraliza a linha dourada da assinatura no mobile */
+  .assinatura-autora::before {
+    margin: 0 auto 0.8rem auto;
+  }
+  
+  /* Ajusta a ilustração para o mobile para centralizá-la e torná-la visível */
+  .ilustracao-capa {
+    max-width: 280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* O sumário vem logo abaixo da capa */
+  .capa-direita { 
+    padding: 4rem 1.5rem; 
+  }
+  
+  /* Ajusta o espaçamento interno dos capítulos */
+  .capitulo { 
+    padding: 3rem 1.2rem 4rem; 
+  }
+  
+  /* Correção de performance: evita a repintura e travamento no celular */
+  .capitulo::before {
+    position: absolute;
+  }
+}
