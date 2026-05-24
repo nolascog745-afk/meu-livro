@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meretrício Na Vida Real — Laura Luxx</title>
-  <link rel="stylesheet" href="assets/style.css?v=3.0">
+  <link rel="stylesheet" href="assets/style.css?v=4.0">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -12,101 +12,43 @@
   <div class="capa">
 
     <div class="capa-esquerda">
-      
-      <div class="cenario-pov">
-        <svg class="canvas-cenario" viewBox="0 0 800 1200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter id="bokeh-suave"><feGaussianBlur stdDeviation="8"/></filter>
-            <filter id="bokeh-forte"><feGaussianBlur stdDeviation="25"/></filter>
-            <filter id="luz-rastro"><feGaussianBlur stdDeviation="4"/></filter>
-            
-            <linearGradient id="grad-silhueta" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#0a0507" />
-              <stop offset="70%" stop-color="#14090c" />
-              <stop offset="100%" stop-color="#240f14" stop-opacity="0.8" />
-            </linearGradient>
+      <svg class="canvas-avenida" viewBox="0 0 800 1200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="1200" fill="linear-gradient(to bottom, #0a0507, #1a090c)" />
+        
+        <path d="M0,1200 L0,400 L150,300 L250,450 L350,350 L450,400 L550,250 L650,450 L800,350 L800,1200 Z" fill="#0f0709" />
+        
+        <g fill="#b8975a" opacity="0.6" filter="blur(2px)">
+          <circle cx="50" cy="350" r="4" />
+          <circle cx="200" cy="320" r="3" />
+          <circle cx="600" cy="300" r="5" />
+          <circle cx="750" cy="380" r="4" />
+        </g>
 
-            <linearGradient id="farol-esquerda" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
-              <stop offset="50%" stop-color="#ffeedd" stop-opacity="0.6" />
-              <stop offset="100%" stop-color="#b8975a" stop-opacity="0" />
-            </linearGradient>
-            <linearGradient id="lanterna-direita" x1="100%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="#ff1133" stop-opacity="0.8" />
-              <stop offset="60%" stop-color="#b03045" stop-opacity="0.4" />
-              <stop offset="100%" stop-color="#000000" stop-opacity="0" />
-            </linearGradient>
-          </defs>
+        <path d="M380,600 L100,1200" stroke="#ffffff" stroke-width="8" opacity="0.3" filter="blur(10px)" />
+        <path d="M420,600 L700,1200" stroke="#ff1133" stroke-width="8" opacity="0.3" filter="blur(10px)" />
 
-          <rect width="800" height="1200" fill="#070405"/>
-          <circle cx="400" cy="600" r="600" fill="url(#grad-silhueta)" opacity="0.4" filter="url(#bokeh-forte)" />
-
-          <path d="M 0 0 L 250 550 L 250 650 L 0 1200 Z" fill="#12090b" opacity="0.85" filter="url(#bokeh-suave)" />
-          <path d="M 800 0 L 550 550 L 550 650 L 800 1200 Z" fill="#0f0709" opacity="0.9" filter="url(#bokeh-suave)" />
-
-          <g fill="#b8975a" opacity="0.25" filter="url(#bokeh-suave)">
-            <rect x="30" y="200" width="15" height="30" />
-            <rect x="60" y="250" width="12" height="25" />
-            <rect x="40" y="400" width="15" height="35" />
-            <rect x="720" y="300" width="14" height="28" />
-            <rect x="750" y="450" width="16" height="32" />
-          </g>
-
-          <path d="M-50 1200 L 360 600 L 390 600 L 150 1200 Z" fill="url(#farol-esquerda)" filter="url(#luz-rastro)" />
-          <path d="M 50 1200 L 370 600 L 385 600 L 220 1200 Z" fill="url(#farol-esquerda)" opacity="0.7" filter="url(#luz-rastro)" />
-          
-          <path d="M 850 1200 L 440 600 L 410 600 L 650 1200 Z" fill="url(#lanterna-direita)" filter="url(#luz-rastro)" />
-          <path d="M 750 1200 L 430 600 L 415 600 L 580 1200 Z" fill="url(#lanterna-direita)" opacity="0.6" filter="url(#luz-rastro)" />
-
-          <circle cx="340" cy="580" r="18" fill="#ffffff" opacity="0.3" filter="url(#bokeh-suave)" />
-          <circle cx="460" cy="590" r="14" fill="#ff4455" opacity="0.4" filter="url(#bokeh-suave)" />
-          <circle cx="280" cy="650" r="28" fill="#ffeedd" opacity="0.15" filter="url(#bokeh-suave)" />
-          <circle cx="550" cy="700" r="35" fill="#ff3344" opacity="0.12" filter="url(#bokeh-suave)" />
-          <circle cx="200" cy="500" r="22" fill="#b8975a" opacity="0.2" filter="url(#bokeh-suave)" />
-          <circle cx="620" cy="480" r="18" fill="#ffeebb" opacity="0.15" filter="url(#bokeh-suave)" />
-
-          <g filter="url(#luz-rastro)">
-            <circle cx="520" cy="720" r="45" fill="url(#grad-silhueta)" />
-            <path d="M 430 820 C 430 760, 460 755, 520 755 C 580 755, 610 760, 610 820 L 630 1250 L 410 1250 Z" fill="url(#grad-silhueta)" />
-            <path d="M 432 820 C 435 770, 465 758, 520 758" stroke="rgba(255, 238, 221, 0.15)" stroke-width="2" fill="none" />
-          </g>
-        </svg>
-      </div>
+        <path d="M400,800 C400,700 550,700 550,800 L580,1200 L370,1200 Z" fill="#14090c" />
+      </svg>
 
       <div class="textos-capa">
-        <p class="tag-editorial">Um guia sobre autonomia e realidade</p>
-        <h1 class="titulo-livro">
-          Meretrício
-          <span class="subtitulo">Na Vida Real</span>
-        </h1>
+        <h1 class="titulo-livro">Meretrício<span>Na Vida Real</span></h1>
         <div class="divisor-ouro"></div>
         <p class="assinatura-autora">Laura Luxx</p>
       </div>
-
     </div>
 
     <div class="capa-direita">
       <nav class="sumario">
         <h2>Sumário</h2>
         <ol>
-          <li class="sem-numero"><a href="capitulos/prefacio.html">Prefácio</a></li>
-          <li class="sem-numero"><a href="capitulos/introducao.html">Introdução</a></li>
-          <li><a href="capitulos/capitulo-01.html">A Decisão: Clareza, Limites e Autocuidado</a></li>
-          <li><a href="capitulos/capitulo-02.html">Direitos e Lei: Proteção Jurídica na Atividade</a></li>
-          <li><a href="capitulos/capitulo-03.html">A Geografia do Trabalho: Locais, Sites e Riscos</a></li>
-          <li><a href="capitulos/capitulo-04.html">Construindo a Marca: Autocuidado e Fidelização</a></li>
-          <li><a href="capitulos/capitulo-05.html">Blindagem Pessoal: Saúde, Prevenção e Limites</a></li>
-          <li><a href="capitulos/capitulo-06.html">O Risco Oculto: De Golpes a Falsas Relações</a></li>
-          <li><a href="capitulos/capitulo-07.html">Patrimônio: Organização Financeira e Primeiros Investimentos</a></li>
-          <li><a href="capitulos/capitulo-08.html">Sucesso em Paz: Equilíbrio Emocional e Riqueza</a></li>
-          <li><a href="capitulos/capitulo-09.html">Redes de Apoio: Equilíbrio Social e Histórias Reais</a></li>
-          <li><a href="capitulos/capitulo-10.html">Sucesso Pessoal: A Construção da Autonomia</a></li>
-          <li class="sem-numero"><a href="capitulos/agradecimentos.html">Agradecimentos</a></li>
+          <li><a href="capitulos/capitulo-01.html">A Decisão</a></li>
+          <li><a href="capitulos/capitulo-02.html">Direitos e Lei</a></li>
+          <li><a href="capitulos/capitulo-03.html">A Geografia do Trabalho</a></li>
+          <li><a href="capitulos/capitulo-04.html">Construindo a Marca</a></li>
+          <li><a href="capitulos/capitulo-05.html">Blindagem Pessoal</a></li>
         </ol>
       </nav>
     </div>
-
   </div>
-
 </body>
 </html>
