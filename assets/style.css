@@ -39,7 +39,7 @@ body {
   flex-direction: column;
   overflow: hidden;
   z-index: 1;
-  background: linear-gradient(to bottom, #050717, #101a3a); /* base em degradê, não preto chapado */
+  background: linear-gradient(to bottom, #050717, #101a3a);
 }
 
 /* Faixa superior de céu com título */
@@ -167,6 +167,122 @@ body {
 }
 
 /* =========================
+   CAPÍTULOS - LAYOUT
+   ========================= */
+
+.capitulo {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 5rem 2rem 6rem;
+}
+
+.capitulo-numero {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #9B2335;
+  margin-bottom: 0.75rem;
+}
+
+.capitulo-titulo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem;
+  line-height: 1.2;
+  color: #121212;
+  margin-bottom: 2.5rem;
+}
+
+/* Linha decorativa abaixo do título */
+.capitulo-titulo::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: #B8975A;
+  margin-top: 1.2rem;
+}
+
+/* Epígrafe */
+.epigrafe {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #555;
+  border-left: 3px solid #B8975A;
+  padding: 0.75rem 1.25rem;
+  margin: 0 0 2.5rem;
+  background: rgba(184, 151, 90, 0.06);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Parágrafos do capítulo */
+.capitulo p {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* Listas */
+.capitulo ul,
+.capitulo ol {
+  margin: 0 0 1.5rem 1.5rem;
+}
+
+.capitulo li {
+  margin-bottom: 0.4rem;
+}
+
+/* =========================
+   AVISO DE EMERGÊNCIA
+   ========================= */
+
+.aviso-emergencia {
+  background: #9B2335;
+  color: #FAF3F0;
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  text-align: center;
+  margin: 2.5rem 0;
+}
+
+.aviso-emergencia strong {
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+}
+
+/* =========================
+   NAVEGAÇÃO ENTRE CAPÍTULOS
+   ========================= */
+
+.navegacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(155, 35, 53, 0.15);
+  gap: 1rem;
+}
+
+.navegacao a {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #9B2335;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+
+.navegacao a:hover {
+  color: #B8975A;
+}
+
+/* =========================
    RESPONSIVIDADE
    ========================= */
 
@@ -191,5 +307,19 @@ body {
 
   .titulo-livro {
     font-size: 2.4rem;
+  }
+
+  .capitulo {
+    padding: 3rem 1.25rem 4rem;
+  }
+
+  .capitulo-titulo {
+    font-size: 1.75rem;
+  }
+
+  .navegacao {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
 }
