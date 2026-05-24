@@ -35,7 +35,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── CAPA / INDEX ───────────────────────────────────── */
+/* ─── CAPA E SUMÁRIO (PC) ────────────────────────────── */
 .capa {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -177,7 +177,7 @@ body {
 
 .sumario li a:hover { color: var(--vinho); }
 
-/* ─── CAPÍTULO ───────────────────────────────────────── */
+/* ─── CAPÍTULOS ──────────────────────────────────────── */
 .capitulo {
   max-width: var(--max-largura);
   margin: 0 auto;
@@ -323,29 +323,3 @@ body {
 
 .navegacao a {
   font-family: var(--fonte-ui);
-  font-size: 0.78rem;
-  font-weight: 300;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--vinho);
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
-
-.navegacao a:hover { opacity: 0.6; }
-
-/* ─── RESPONSIVO ─────────────────────────────────────── */
-@media (max-width: 768px) {
-  .capa { grid-template-columns: 1fr; }
-  .capa-esquerda { 
-    min-height: 50vh; 
-    padding: 3rem 2rem 0 2rem; 
-  }
-  .capa-direita { padding: 3rem 2rem; }
-  .capitulo { padding: 3rem 1.2rem 4rem; }
-  
-  /* Correção de performance: evita a repintura constante no celular */
-  .capitulo::before {
-    position: absolute;
-  }
-}
