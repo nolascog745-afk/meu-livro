@@ -4,56 +4,65 @@
 html { font-size: 18px; }
 body { font-family: 'Lora', serif; color: #121212; background: #FAF3F0; line-height: 1.85; }
 
-/* Capa */
-.capa { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
-.capa-esquerda { 
-  background: #050203; position: sticky; top: 0; height: 100vh;
-  display: flex; flex-direction: column; justify-content: flex-start; align-items: center; 
-  padding-top: 5vh; overflow: hidden; z-index: 1;
+.capa {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  min-height: 100vh;
 }
 
-/* Animações */
-@keyframes luzFrenetica {
-  0% { left: -10%; opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { left: 110%; opacity: 0; }
+.capa-esquerda {
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Cenário */
-.cenario-container { position: absolute; inset: 0; z-index: 0; }
-
-/* Estrelas */
-.estrelas { position: absolute; inset: 0; background-image: radial-gradient(white, transparent 1px); background-size: 100px 100px; opacity: 0.4; }
-
-/* Cidade Lateral */
-.cidade-lateral {
-  position: absolute; right: 0; bottom: 0; width: 35%; height: 60%;
-  background: linear-gradient(to top, #000 80%, transparent 100%);
-  /* Janelas nítidas */
-  background-image: radial-gradient(2px 2px at 20px 20px, #d4af37, transparent), radial-gradient(2px 2px at 50px 80px, #d4af37, transparent), radial-gradient(2px 2px at 30px 150px, #d4af37, transparent);
-  background-size: 80px 200px;
+/* Faixa do céu (título) */
+.faixa-ceu {
+  flex: 0 0 40%;
+  background: linear-gradient(to bottom, #050717, #101a3a);
+  display: flex;
+  align-items: center;
+  padding: 3rem;
 }
 
-/* Luzes Frenéticas */
-.luz-carro { position: absolute; height: 2px; background: rgba(255,255,255,0.8); }
-.l1 { top: 70%; width: 50px; animation: luzFrenetica 0.8s infinite linear; }
-.l2 { top: 75%; width: 30px; animation: luzFrenetica 0.5s infinite linear 0.2s; }
-.l3 { top: 80%; width: 70px; animation: luzFrenetica 1.2s infinite linear 0.1s; }
-
-/* Silhueta Feminina (Nítida e Central) */
-.silhueta-perfil {
-  position: absolute; bottom: 0; left: 15%; width: 200px; height: 350px;
+.textos-capa {
+  max-width: 80%;
 }
 
-/* Textos */
-.textos-capa { position: relative; z-index: 10; color: #FAF3F0; text-align: center; width: 85%; }
-.titulo-livro { font-family: 'Fraunces', serif; font-size: 3.5rem; text-transform: uppercase; line-height: 1; }
-.subtitulo { display: block; font-size: 0.35em; color: #B8975A; letter-spacing: 0.4em; margin-top: 1rem; }
-.tag-editorial { font-family: 'Inter', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(250,243,240,0.7); margin-bottom: 2rem; }
-.assinatura-autora { font-family: 'Pinyon Script', cursive; font-size: 2.8rem; color: #B8975A; margin-top: 2rem; }
-.divisor-ouro { width: 40px; height: 2px; background: #B8975A; margin: 2rem auto; }
+.titulo-livro {
+  font-size: 2.4rem;
+  line-height: 1.1;
+  color: #f5f5ff;
+}
 
+.titulo-livro .subtitulo {
+  display: block;
+  font-size: 1.6rem;
+  color: #ff74e6;
+}
+
+.assinatura-autora {
+  margin-top: 1rem;
+  color: #cfd3ff;
+}
+
+/* Faixa da cidade */
+.faixa-cidade {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.cidade-neon {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Glow opcional nas janelas neon do SVG */
+.cidade-neon rect[fill="url(#grad-janela)"] {
+  filter: drop-shadow(0 0 6px rgba(255, 138, 242, 0.9));
+}
 /* Lado Direito - Mantido o original */
 .capa-direita { background: white; padding: 4rem; display: flex; flex-direction: column; justify-content: center; }
 .sumario ol { list-style: none; counter-reset: item; }
