@@ -1,122 +1,205 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400&family=Pinyon+Script&display=swap');
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 18px; }
-body { font-family: 'Lora', serif; color: #121212; background: #FAF3F0; line-height: 1.85; }
+/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  font-family: 'Lora', serif;
+  color: #121212;
+  background: #FAF3F0;
+  line-height: 1.85;
+}
+
+/* =========================
+   CAPA - LAYOUT GERAL
+   ========================= */
 
 .capa {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 1fr 1fr;
   min-height: 100vh;
 }
 
+/* Lado esquerdo: capa visual */
 .capa-esquerda {
-  position: relative;
+  background: #050203;
+  position: sticky;
+  top: 0;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  z-index: 1;
 }
 
-/* Faixa do céu (título) */
+/* Faixa superior de céu com título */
 .faixa-ceu {
   flex: 0 0 40%;
   background: linear-gradient(to bottom, #050717, #101a3a);
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 3rem;
 }
 
 .textos-capa {
-  max-width: 80%;
+  position: relative;
+  z-index: 10;
+  color: #FAF3F0;
+  text-align: center;
+  width: 85%;
 }
 
 .titulo-livro {
-  font-size: 2.4rem;
-  line-height: 1.1;
-  color: #f5f5ff;
+  font-family: 'Fraunces', serif;
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  line-height: 1;
 }
 
-.titulo-livro .subtitulo {
+.subtitulo {
   display: block;
-  font-size: 1.6rem;
-  color: #ff74e6;
+  font-size: 0.4em;
+  color: #B8975A;
+  letter-spacing: 0.4em;
+  margin-top: 1rem;
+}
+
+.tag-editorial {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(250,243,240,0.7);
+  margin-bottom: 2rem;
 }
 
 .assinatura-autora {
-  margin-top: 1rem;
-  color: #cfd3ff;
+  font-family: 'Pinyon Script', cursive;
+  font-size: 2.8rem;
+  color: #B8975A;
+  margin-top: 2rem;
 }
 
-/* Faixa da cidade */
+.divisor-ouro {
+  width: 40px;
+  height: 2px;
+  background: #B8975A;
+  margin: 2rem auto;
+}
+
+/* Faixa inferior com cidade neon */
 .faixa-cidade {
   flex: 1;
   position: relative;
   overflow: hidden;
 }
 
+/* SVG da cidade */
 .cidade-neon {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-/* Glow opcional nas janelas neon do SVG */
+/* Glow das janelas neon */
 .cidade-neon rect[fill="url(#grad-janela)"] {
   filter: drop-shadow(0 0 6px rgba(255, 138, 242, 0.9));
 }
-/* Lado Direito - Mantido o original */
-.capa-direita { background: white; padding: 4rem; display: flex; flex-direction: column; justify-content: center; }
-.sumario ol { list-style: none; counter-reset: item; }
-.sumario li { border-bottom: 1px solid rgba(155,35,53,0.1); padding: 1rem 0; counter-increment: item; }
-.sumario li:not(.sem-numero) { counter-increment: item; }
-.sumario li a { text-decoration: none; color: #121212; font-size: 0.95rem; display: flex; align-items: baseline; }
-.sumario li:not(.sem-numero) a::before { content: counter(item, decimal-leading-zero); font-size: 0.6rem; color: #9B2335; margin-right: 1rem; }
-.sumario li.sem-numero a::before { content: ''; }
+
+/* =========================
+   LADO DIREITO - SUMÁRIO
+   ========================= */
+
+.capa-direita {
+  background: white;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.capa-direita h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  color: #121212;
+}
+
+.sumario ol {
+  list-style: none;
+  counter-reset: item;
+}
+
+.sumario li {
+  border-bottom: 1px solid rgba(155,35,53,0.1);
+  padding: 1rem 0;
+}
+
+.sumario li a {
+  text-decoration: none;
+  color: #121212;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: baseline;
+}
+
+/* Numeração automática para itens comuns */
+.sumario li:not(.sem-numero) {
+  counter-increment: item;
+}
+
+.sumario li:not(.sem-numero) a::before {
+  content: counter(item, decimal-leading-zero);
+  font-size: 0.6rem;
+  color: #9B2335;
+  margin-right: 1rem;
+}
+
+/* Itens sem número (ex: Agradecimentos) */
+.sumario li.sem-numero a::before {
+  content: '';
+}
+
+/* Hover suave nos links do sumário */
+.sumario li a:hover {
+  color: #9B2335;
+}
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
 
 @media (max-width: 768px) {
-  .capa { grid-template-columns: 1fr; }
-  .capa-esquerda { height: auto; min-height: 80vh; }
-}
-/* ─── SKYLINE (PRÉDIOS REALISTAS) ───────────────────── */
-.skyline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 40vh; /* Altura do horizonte */
-  display: flex;
-  align-items: flex-end;
-  gap: 4px;
-  z-index: 3;
-}
+  .capa {
+    grid-template-columns: 1fr;
+  }
 
-.building {
-  background: linear-gradient(to top, #050203 0%, #1a070c 100%);
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  position: relative;
-  /* Janelas (Pontos de luz nítidos) */
-  background-image: radial-gradient(1.5px 1.5px at 10px 20px, #d4af37, transparent),
-                    radial-gradient(1.5px 1.5px at 30px 60px, #d4af37, transparent),
-                    radial-gradient(1.5px 1.5px at 20px 100px, #d4af37, transparent);
-  background-size: 100% 120px;
-}
+  .capa-esquerda {
+    position: relative;
+    height: auto;
+    min-height: 80vh;
+  }
 
-/* Alturas e larguras variadas para parecer uma cidade real */
-.b1 { width: 12%; height: 60%; }
-.b2 { width: 15%; height: 85%; }
-.b3 { width: 10%; height: 70%; }
-.b4 { width: 18%; height: 95%; }
-.b5 { width: 14%; height: 75%; }
-.b6 { width: 16%; height: 90%; }
-.b7 { width: 15%; height: 65%; }
+  .capa-direita {
+    padding: 2.5rem 1.5rem;
+  }
 
-/* Pequeno brilho sutil na base para separar o prédio do chão */
-.skyline::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background: rgba(184, 151, 90, 0.1);
-  box-shadow: 0 0 10px rgba(184, 151, 90, 0.2);
+  .faixa-ceu {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .titulo-livro {
+    font-size: 2.4rem;
+  }
 }
