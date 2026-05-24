@@ -49,20 +49,21 @@ body {
     radial-gradient(circle at 50% 90%, rgba(155, 35, 53, 0.08) 0%, transparent 40%);
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Mantém tudo perfeitamente centralizado e elegante */
-  padding: 4rem 3.5rem;
+  justify-content: center; /* Centralização vertical precisa */
+  align-items: center;     /* Centralização horizontal precisa */
+  text-align: center;
+  padding: 3rem;
   
-  /* O Truque de Mestre: Capa Fixa no PC */
+  /* Mantém a capa fixa no PC enquanto a direita rola */
   position: sticky;
   top: 0;
   height: 100vh;
   height: 100svh;
-  
   overflow: hidden;
   z-index: 1;
 }
 
-/* Efeito de textura de papel aquarela */
+/* Textura de papel aquarela */
 .capa-esquerda::before {
   content: '';
   position: absolute;
@@ -75,31 +76,17 @@ body {
 }
 
 .textos-capa {
-  margin-top: 0;
-  margin-bottom: 3rem; /* Espaço fixo e seguro entre o texto e a arte */
+  margin: 0 0 2.5rem 0;
 }
 
 .titulo-livro {
   font-family: var(--fonte-titulo);
-  font-size: clamp(2rem, 3.5vw, 3rem); /* Reduzido levemente para mais sofisticação */
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
   font-weight: 900;
   color: var(--carvao);
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.01em;
-  margin-bottom: 2rem;
-  position: relative;
-  z-index: 1;
-}
-
-.titulo-livro span {
-  display: block;
-  font-size: 0.45em;
-  font-weight: 400;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--terracota);
-  font-family: var(--fonte-ui);
-  margin-bottom: 0.6rem;
+  margin-bottom: 1.5rem;
 }
 
 .assinatura-autora {
@@ -107,7 +94,6 @@ body {
   font-size: 2.2rem;
   color: var(--vinho);
   position: relative;
-  z-index: 1;
 }
 
 .assinatura-autora::before {
@@ -116,12 +102,13 @@ body {
   width: 2.5rem;
   height: 1px;
   background: var(--dourado);
-  margin-bottom: 0.8rem;
+  margin: 0 auto 0.8rem auto;
 }
 
 .ilustracao-capa {
   width: 100%;
-  max-width: 280px; /* Reduzido para ficar mais delicado no PC */
+  max-width: 240px;
+  max-height: 35vh; /* Impede a ilustração de esticar ou crescer demais no PC */
   margin: 0 auto;
   display: block;
   position: relative;
@@ -190,7 +177,6 @@ body {
   position: relative;
 }
 
-/* vinheta nas bordas */
 .capitulo::before {
   content: '';
   position: fixed;
@@ -206,7 +192,6 @@ body {
 
 .capitulo > * { position: relative; z-index: 1; }
 
-/* número do capítulo */
 .capitulo-numero {
   font-family: var(--fonte-ui);
   font-size: 0.65rem;
@@ -217,7 +202,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* título */
 .capitulo-titulo {
   font-family: var(--fonte-titulo);
   font-size: clamp(1.8rem, 3.5vw, 2.6rem);
@@ -227,7 +211,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* ícone SVG autoral */
 .icone-capitulo {
   display: block;
   width: 56px;
@@ -237,7 +220,6 @@ body {
   opacity: 0.75;
 }
 
-/* epígrafe */
 .epigrafe {
   font-family: var(--fonte-corpo);
   font-style: italic;
@@ -249,14 +231,12 @@ body {
   line-height: 1.6;
 }
 
-/* texto corrido */
 .capitulo p {
   font-size: 1rem;
   margin-bottom: 1.4rem;
   color: var(--carvao);
 }
 
-/* headings internos */
 .capitulo h2 {
   font-family: var(--fonte-sub);
   font-size: 1.25rem;
@@ -274,7 +254,6 @@ body {
   margin: 2rem 0 0.8rem;
 }
 
-/* listas */
 .capitulo ul, .capitulo ol {
   padding-left: 1.4rem;
   margin-bottom: 1.4rem;
@@ -287,7 +266,6 @@ body {
 
 .capitulo ul li::marker { color: var(--vinho); }
 
-/* aviso de emergência */
 .aviso-emergencia {
   background: rgba(155, 35, 53, 0.06);
   border-left: 3px solid var(--vinho);
@@ -300,7 +278,6 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* divisor ornamental */
 .divisor {
   display: flex;
   align-items: center;
@@ -316,7 +293,6 @@ body {
   background: var(--vinho);
 }
 
-/* ─── NAVEGAÇÃO ENTRE CAPÍTULOS ──────────────────────── */
 .navegacao {
   display: flex;
   justify-content: space-between;
@@ -339,55 +315,41 @@ body {
 
 .navegacao a:hover { opacity: 0.6; }
 
-/* ─── RESPONSIVO (MOBILE/PC) ─────────────────────────── */
+/* ─── RESPONSIVO (MOBILE) ────────────────────────────── */
 @media (max-width: 768px) {
-  /* Transforma o grid em uma única coluna */
   .capa { 
     grid-template-columns: 1fr; 
   }
   
-  /* CORREÇÃO DE LAYOUT MOBILE */
   .capa-esquerda { 
-    position: relative; /* Desliga a fixação (sticky) no celular */
+    position: relative;
     height: auto;
     min-height: 100vh;
-    min-height: 100svh; /* Ocupa a tela inteira */
-    padding: 7rem 1.5rem 2rem 1.5rem; 
-    justify-content: flex-start; /* Alinha o conteúdo ao início */
-    align-items: center; /* Centraliza horizontalmente */
+    min-height: 100svh;
+    padding: 6rem 1.5rem 3rem 1.5rem; 
+    justify-content: center;
+    align-items: center; 
   }
 
-  /* Centraliza e dá espaço aos textos no mobile */
   .textos-capa {
     text-align: center;
     margin-top: 0;
-    margin-bottom: 2rem; /* Espaço antes da ilustração */
-  }
-
-  /* Centraliza a linha dourada da assinatura no mobile */
-  .assinatura-autora::before {
-    margin: 0 auto 0.8rem auto;
+    margin-bottom: 2rem;
   }
   
-  /* Ajusta a ilustração para o mobile */
   .ilustracao-capa {
-    max-width: 250px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
+    max-width: 220px;
+    max-height: 35vh;
   }
 
-  /* O sumário vem logo abaixo da capa */
   .capa-direita { 
     padding: 4rem 1.5rem; 
   }
   
-  /* Ajusta o espaçamento interno dos capítulos */
   .capitulo { 
     padding: 3rem 1.2rem 4rem; 
   }
   
-  /* Correção de performance no celular */
   .capitulo::before {
     position: absolute;
   }
