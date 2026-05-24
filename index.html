@@ -12,40 +12,60 @@
   <div class="capa">
 
     <div class="capa-esquerda">
+      
+      <svg class="bg-ilustracao" viewBox="0 0 800 1200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="blur-heavy"><feGaussianBlur stdDeviation="80"/></filter>
+        </defs>
+        
+        <circle cx="100" cy="200" r="350" fill="rgba(196, 115, 122, 0.25)" filter="url(#blur-heavy)" />
+        <circle cx="700" cy="1000" r="450" fill="rgba(184, 151, 90, 0.15)" filter="url(#blur-heavy)" />
+        <circle cx="700" cy="100" r="300" fill="rgba(155, 35, 53, 0.1)" filter="url(#blur-heavy)" />
+
+        <g stroke="var(--vinho)" stroke-width="2" opacity="0.15">
+          <line x1="150" y1="0" x2="150" y2="1200" />
+          <line x1="650" y1="0" x2="650" y2="1200" />
+          <line x1="0" y1="300" x2="800" y2="300" />
+          <line x1="0" y1="900" x2="800" y2="900" />
+          <circle cx="150" cy="300" r="25" fill="none"/>
+          <circle cx="650" cy="900" r="25" fill="none"/>
+          <circle cx="150" cy="900" r="10" fill="none"/>
+          <circle cx="650" cy="300" r="10" fill="none"/>
+        </g>
+
+        <path d="M-100,400 C 200,600 300,100 900,400" stroke="var(--dourado)" stroke-width="3" fill="none" opacity="0.6" />
+        <path d="M-50,500 C 300,700 500,200 950,450" stroke="var(--dourado)" stroke-width="1.5" fill="none" opacity="0.4" />
+        <path d="M-100,1000 C 200,900 400,1100 900,800" stroke="var(--dourado)" stroke-width="2.5" fill="none" opacity="0.5" />
+
+        <g transform="translate(600, 150) rotate(35)" stroke="var(--carvao)" stroke-width="2.5" fill="none" opacity="0.7">
+          <path d="M0,0 C 80,-80 160,-30 180,80 C 80,110 30,30 0,0 Z" fill="rgba(255,255,255,0.4)"/>
+          <path d="M0,0 C 50,-120 120,-90 150,-20 C 30,20 -15,-45 0,0 Z" />
+          <path d="M0,0 L 150,20" opacity="0.5"/>
+        </g>
+
+        <g transform="translate(180, 1050) rotate(-145)" stroke="var(--carvao)" stroke-width="2.5" fill="none" opacity="0.75">
+          <path d="M0,0 C 100,-100 200,-50 220,100 C 100,130 50,50 0,0 Z" fill="rgba(250, 243, 240, 0.6)"/>
+          <path d="M0,0 C 60,-150 150,-120 180,-30 C 45,30 -30,-60 0,0 Z" />
+          <path d="M0,0 L 180,25" opacity="0.5"/>
+          <circle cx="230" cy="50" r="6" fill="var(--carvao)"/>
+          <circle cx="255" cy="20" r="3" fill="var(--carvao)"/>
+        </g>
+
+        <g transform="translate(50, 600) rotate(15)" stroke="var(--vinho)" stroke-width="2" fill="none" opacity="0.5">
+           <path d="M0,0 C 50,-50 100,-25 110,50 C 50,65 25,25 0,0 Z" />
+           <path d="M0,0 L 100,10" />
+        </g>
+      </svg>
+
       <div class="textos-capa">
         <h1 class="titulo-livro">
-          Meretrício<br>Na Vida Real
+          Meretrício<br>
+          <span class="subtitulo">Na Vida Real</span>
         </h1>
+        <div class="divisor-ouro"></div>
         <p class="assinatura-autora">Laura Luxx</p>
       </div>
 
-      <svg class="ilustracao-capa" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="90" cy="110" r="80" fill="rgba(196, 115, 122, 0.2)" filter="blur(18px)" />
-        <circle cx="120" cy="140" r="55" fill="rgba(184, 151, 90, 0.15)" filter="blur(14px)" />
-        <circle cx="100" cy="80" r="50" fill="rgba(155, 35, 53, 0.06)" filter="blur(20px)" />
-        
-        <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-          
-          <path d="M 100 30 L 160 55 V 130 C 160 170, 100 210, 100 210 C 100 210, 40 170, 40 130 V 55 Z" stroke="var(--vinho)" stroke-width="0.8" opacity="0.6" />
-          <path d="M 100 35 L 155 58 V 128 C 155 165, 100 205, 100 205 C 100 205, 45 165, 45 128 V 58 Z" stroke="var(--vinho)" stroke-width="0.5" opacity="0.3" />
-
-          <g stroke="var(--carvao)" stroke-width="1.3">
-            <path d="M 100 160 C 95 140, 95 120, 100 100 C 105 120, 105 140, 100 160 Z" fill="rgba(43, 43, 43, 0.03)" />
-            <path d="M 97 155 C 80 145, 75 125, 82 105" />
-            <path d="M 94 145 C 65 145, 60 120, 70 115" />
-            <path d="M 103 155 C 120 145, 125 125, 118 105" />
-            <path d="M 106 145 C 135 145, 140 120, 130 115" />
-            <path d="M 90 160 Q 100 170 110 160" />
-          </g>
-          
-          <g stroke="var(--dourado)" stroke-width="1.3" opacity="0.8" filter="blur(0.3px)">
-            <path d="M 50 70 Q 80 60 110 90 T 150 70" />
-            <path d="M 60 180 Q 90 195 100 170 T 140 160" stroke-width="1"/>
-            <path d="M 100 100 Q 115 110 100 125 T 100 160" stroke-width="0.8" opacity="0.6"/>
-          </g>
-          
-        </g>
-      </svg>
     </div>
 
     <div class="capa-direita">
@@ -69,10 +89,6 @@
       </nav>
     </div>
 
-  </div>
-
-  <div style="display:none" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg" style="display:none"></svg>
   </div>
 
 </body>
