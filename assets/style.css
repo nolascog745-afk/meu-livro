@@ -39,8 +39,6 @@ body {
 .capa {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
-  min-height: 100svh;
 }
 
 .capa-esquerda {
@@ -51,14 +49,20 @@ body {
     radial-gradient(circle at 50% 90%, rgba(155, 35, 53, 0.08) 0%, transparent 40%);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 4rem 3.5rem 0 3.5rem;
-  position: relative;
+  justify-content: center; /* Mantém tudo perfeitamente centralizado e elegante */
+  padding: 4rem 3.5rem;
+  
+  /* O Truque de Mestre: Capa Fixa no PC */
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  
   overflow: hidden;
   z-index: 1;
 }
 
-/* Efeito de textura de papel aquarela genuinely textured */
+/* Efeito de textura de papel aquarela */
 .capa-esquerda::before {
   content: '';
   position: absolute;
@@ -71,12 +75,13 @@ body {
 }
 
 .textos-capa {
-  margin-top: 2rem;
+  margin-top: 0;
+  margin-bottom: 3rem; /* Espaço fixo e seguro entre o texto e a arte */
 }
 
 .titulo-livro {
   font-family: var(--fonte-titulo);
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(2rem, 3.5vw, 3rem); /* Reduzido levemente para mais sofisticação */
   font-weight: 900;
   color: var(--carvao);
   line-height: 1.1;
@@ -116,7 +121,7 @@ body {
 
 .ilustracao-capa {
   width: 100%;
-  max-width: 380px; /* Aumentado levemente para PC */
+  max-width: 280px; /* Reduzido para ficar mais delicado no PC */
   margin: 0 auto;
   display: block;
   position: relative;
@@ -339,14 +344,15 @@ body {
   /* Transforma o grid em uma única coluna */
   .capa { 
     grid-template-columns: 1fr; 
-    min-height: auto;
   }
   
-  /* CORREÇÃO DE LAYOUT MOBILE: centralização e espaço no topo */
+  /* CORREÇÃO DE LAYOUT MOBILE */
   .capa-esquerda { 
+    position: relative; /* Desliga a fixação (sticky) no celular */
+    height: auto;
     min-height: 100vh;
     min-height: 100svh; /* Ocupa a tela inteira */
-    padding: 7rem 1.5rem 2rem 1.5rem; /* Aumentado padding do topo e adicionado fundo seguro */
+    padding: 7rem 1.5rem 2rem 1.5rem; 
     justify-content: flex-start; /* Alinha o conteúdo ao início */
     align-items: center; /* Centraliza horizontalmente */
   }
@@ -363,9 +369,9 @@ body {
     margin: 0 auto 0.8rem auto;
   }
   
-  /* Ajusta a ilustração para o mobile para centralizá-la e torná-la visível */
+  /* Ajusta a ilustração para o mobile */
   .ilustracao-capa {
-    max-width: 280px;
+    max-width: 250px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
@@ -381,7 +387,7 @@ body {
     padding: 3rem 1.2rem 4rem; 
   }
   
-  /* Correção de performance: evita a repintura e travamento no celular */
+  /* Correção de performance no celular */
   .capitulo::before {
     position: absolute;
   }
