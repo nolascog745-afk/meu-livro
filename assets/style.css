@@ -25,7 +25,7 @@
 }
 
 /* ─── BASE ───────────────────────────────────────────── */
-html { font-size: 18px; scroll-behavior: smooth; }
+html { font-size: 18px; }
 
 body {
   font-family: var(--fonte-corpo);
@@ -40,6 +40,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 100vh;
+  min-height: 100svh;
 }
 
 .capa-esquerda {
@@ -317,4 +318,9 @@ body {
   .capa-esquerda { min-height: 50vh; padding: 3rem 2rem; }
   .capa-direita { padding: 3rem 2rem; }
   .capitulo { padding: 3rem 1.2rem 4rem; }
+  
+  /* Correção de performance: evita a repintura constante no celular */
+  .capitulo::before {
+    position: absolute;
+  }
 }
