@@ -1,418 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400&family=Pinyon+Script&display=swap');
 
-/* ─── RESET ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 18px; }
+body { font-family: 'Lora', serif; color: #121212; background: #FAF3F0; line-height: 1.85; }
 
-/* ─── VARIÁVEIS ──────────────────────────────────────── */
-:root {
-  --vinho:       #9B2335;
-  --carmim:      #B03045;
-  --terracota:   #C4737A;
-  --creme:       #FAF3F0;
-  --branco:      #FFFFFF;
-  --carvao:      #121212;
-  --dourado:     #B8975A;
-  --vinheta:     rgba(155, 35, 53, 0.06);
-
-  --fonte-titulo:    'Fraunces', serif;
-  --fonte-sub:       'DM Serif Display', serif;
-  --fonte-corpo:     'Lora', serif;
-  --fonte-ui:        'Inter', sans-serif;
-  --fonte-autora:    'Pinyon Script', cursive;
-
-  --max-largura: 780px;
+/* Capa */
+.capa { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+.capa-esquerda { 
+  background: #050203; position: sticky; top: 0; height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-start; align-items: center; 
+  padding-top: 5vh; overflow: hidden; z-index: 1;
 }
 
-html { font-size: 18px; scroll-behavior: smooth; }
-
-body {
-  font-family: var(--fonte-corpo);
-  color: var(--carvao);
-  background: var(--branco);
-  line-height: 1.85;
-  -webkit-font-smoothing: antialiased;
+/* Animações */
+@keyframes luzFrenetica {
+  0% { left: -10%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { left: 110%; opacity: 0; }
 }
 
-/* ─── CAPA PRINCIPAL (PC) ────────────────────────────── */
-.capa {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
+/* Cenário */
+.cenario-container { position: absolute; inset: 0; z-index: 0; }
+
+/* Estrelas */
+.estrelas { position: absolute; inset: 0; background-image: radial-gradient(white, transparent 1px); background-size: 100px 100px; opacity: 0.4; }
+
+/* Cidade Lateral */
+.cidade-lateral {
+  position: absolute; right: 0; bottom: 0; width: 35%; height: 60%;
+  background: linear-gradient(to top, #000 80%, transparent 100%);
+  /* Janelas nítidas */
+  background-image: radial-gradient(2px 2px at 20px 20px, #d4af37, transparent), radial-gradient(2px 2px at 50px 80px, #d4af37, transparent), radial-gradient(2px 2px at 30px 150px, #d4af37, transparent);
+  background-size: 80px 200px;
 }
 
-.capa-esquerda {
-  background: linear-gradient(180deg, #050203 0%, #150508 60%, #2b0f16 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
-  
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  height: 100svh;
-  overflow: hidden;
-  z-index: 1;
+/* Luzes Frenéticas */
+.luz-carro { position: absolute; height: 2px; background: rgba(255,255,255,0.8); }
+.l1 { top: 70%; width: 50px; animation: luzFrenetica 0.8s infinite linear; }
+.l2 { top: 75%; width: 30px; animation: luzFrenetica 0.5s infinite linear 0.2s; }
+.l3 { top: 80%; width: 70px; animation: luzFrenetica 1.2s infinite linear 0.1s; }
+
+/* Silhueta Feminina (Nítida e Central) */
+.silhueta-perfil {
+  position: absolute; bottom: 0; left: 15%; width: 200px; height: 350px;
 }
 
-/* ─── ANIMAÇÕES DA CAPA ──────────────────────────────── */
-@keyframes brilhoEstrelas {
-  0% { opacity: 0.4; transform: scale(0.9); }
-  100% { opacity: 1; transform: scale(1.1); }
-}
+/* Textos */
+.textos-capa { position: relative; z-index: 10; color: #FAF3F0; text-align: center; width: 85%; }
+.titulo-livro { font-family: 'Fraunces', serif; font-size: 3.5rem; text-transform: uppercase; line-height: 1; }
+.subtitulo { display: block; font-size: 0.35em; color: #B8975A; letter-spacing: 0.4em; margin-top: 1rem; }
+.tag-editorial { font-family: 'Inter', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(250,243,240,0.7); margin-bottom: 2rem; }
+.assinatura-autora { font-family: 'Pinyon Script', cursive; font-size: 2.8rem; color: #B8975A; margin-top: 2rem; }
+.divisor-ouro { width: 40px; height: 2px; background: #B8975A; margin: 2rem auto; }
 
-@keyframes deslizarRastroEsq {
-  0% { transform: translate(-50%, -100%) rotate(30deg); opacity: 0; }
-  20% { opacity: 0.6; }
-  80% { opacity: 0.8; }
-  100% { transform: translate(-50%, 150%) rotate(45deg); opacity: 0; }
-}
+/* Lado Direito - Mantido o original */
+.capa-direita { background: white; padding: 4rem; display: flex; flex-direction: column; justify-content: center; }
+.sumario ol { list-style: none; counter-reset: item; }
+.sumario li { border-bottom: 1px solid rgba(155,35,53,0.1); padding: 1rem 0; counter-increment: item; }
+.sumario li:not(.sem-numero) { counter-increment: item; }
+.sumario li a { text-decoration: none; color: #121212; font-size: 0.95rem; display: flex; align-items: baseline; }
+.sumario li:not(.sem-numero) a::before { content: counter(item, decimal-leading-zero); font-size: 0.6rem; color: #9B2335; margin-right: 1rem; }
+.sumario li.sem-numero a::before { content: ''; }
 
-@keyframes deslizarRastroDir {
-  0% { transform: translate(50%, -100%) rotate(-30deg); opacity: 0; }
-  20% { opacity: 0.5; }
-  80% { opacity: 0.7; }
-  100% { transform: translate(50%, 150%) rotate(-45deg); opacity: 0; }
-}
-
-@keyframes respirarSilhueta {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-8px); }
-}
-
-/* ─── CENÁRIO VIVO (MATEMÁTICA PURA) ─────────────────── */
-.cenario-animado {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* 1. Céu Estrelado (Nítido) */
-.ceu-estrelas {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    radial-gradient(1.5px 1.5px at 10% 20%, #fff, transparent),
-    radial-gradient(2px 2px at 25% 15%, #fff, transparent),
-    radial-gradient(1px 1px at 40% 25%, #fff, transparent),
-    radial-gradient(2px 2px at 70% 10%, rgba(255,230,200,0.9), transparent),
-    radial-gradient(1.5px 1.5px at 85% 25%, #fff, transparent);
-  background-size: 150px 150px;
-  animation: brilhoEstrelas 4s infinite alternate ease-in-out;
-  z-index: 1;
-}
-
-/* 2. Prédios Laterais (Bordas Nítidas Poligonais) */
-.predio-esq, .predio-dir {
-  position: absolute;
-  bottom: 0; top: 35%;
-  width: 45%;
-  /* Gradiente base do prédio */
-  background-color: #0c0406;
-  background-image: linear-gradient(180deg, #0c0406 0%, #000 100%);
-  z-index: 2;
-}
-
-/* O Segredo: Pontos Amarelos (Janelas) cravados na estrutura nítida */
-.predio-esq::after, .predio-dir::after {
-  content: '';
-  position: absolute; inset: 0;
-  background-image: 
-    radial-gradient(1.5px 1.5px at 10px 10px, var(--dourado), transparent),
-    radial-gradient(1.5px 1.5px at 30px 40px, rgba(255, 238, 221, 0.8), transparent),
-    radial-gradient(2px 2px at 50px 20px, var(--dourado), transparent);
-  background-size: 60px 80px; /* Padrão de janelas se repetindo */
-  opacity: 0.6;
-}
-
-/* Recortes Geométricos Nítidos (Degraus dos prédios) */
-.predio-esq {
-  left: 0;
-  clip-path: polygon(0% 100%, 0% 10%, 25% 10%, 25% 30%, 55% 30%, 55% 55%, 85% 55%, 85% 100%);
-}
-.predio-dir {
-  right: 0;
-  clip-path: polygon(100% 100%, 100% 15%, 80% 15%, 80% 35%, 50% 35%, 50% 65%, 20% 65%, 20% 100%);
-}
-
-/* 3. Avenida e Luzes (Turvas) */
-.avenida-luzes {
-  position: absolute;
-  top: 50%; left: 0; width: 100%; height: 50%;
-  z-index: 3;
-  overflow: hidden;
-  /* Brilho da rua no fundo */
-  background: radial-gradient(ellipse at top center, rgba(184,151,90,0.1) 0%, transparent 70%);
-}
-
-.rastro {
-  position: absolute;
-  top: 0;
-  width: 30px; height: 120%;
-  border-radius: 50px;
-  /* É aqui que entra o turvo: apenas nas luzes */
-  filter: blur(8px);
-}
-
-/* Faróis Brancos (Esquerda) */
-.r-branco-1 { left: 40%; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.8), transparent); animation: deslizarRastroEsq 2s infinite linear; }
-.r-branco-2 { left: 30%; width: 20px; background: linear-gradient(to bottom, transparent, rgba(255,230,200,0.6), transparent); animation: deslizarRastroEsq 2.5s infinite linear 0.5s; }
-.r-branco-3 { left: 20%; width: 40px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.7), transparent); animation: deslizarRastroEsq 1.8s infinite linear 1.2s; }
-
-/* Lanternas Vermelhas (Direita) */
-.r-vermelho-1 { right: 40%; background: linear-gradient(to bottom, transparent, rgba(255,30,50,0.8), transparent); animation: deslizarRastroDir 2.2s infinite linear; }
-.r-vermelho-2 { right: 30%; width: 25px; background: linear-gradient(to bottom, transparent, rgba(255,50,80,0.6), transparent); animation: deslizarRastroDir 1.9s infinite linear 0.7s; }
-.r-vermelho-3 { right: 20%; width: 45px; background: linear-gradient(to bottom, transparent, rgba(200,20,40,0.8), transparent); animation: deslizarRastroDir 2.7s infinite linear 0.3s; }
-
-/* 4. A Protagonista (Silhueta Nítida) */
-.silhueta-protagonista {
-  position: absolute;
-  bottom: -2%; right: 5%; /* Posicionada à direita */
-  width: 250px; height: 50vh;
-  z-index: 10;
-  animation: respirarSilhueta 3.5s infinite alternate ease-in-out;
-}
-.silhueta-protagonista svg {
-  width: 100%; height: 100%;
-  filter: drop-shadow(-5px 0px 10px rgba(0,0,0,0.8)); /* Sombra para destacar contra a avenida */
-}
-
-/* ─── TEXTOS DA CAPA ─────────────────────────────────── */
-.textos-capa {
-  position: relative;
-  z-index: 20; /* Fica acima de toda a arte */
-  padding: 3.5rem 2rem 2rem 2rem; /* Margem extra no topo para descolar da borda */
-}
-
-.tag-editorial {
-  font-family: var(--fonte-ui);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.35em;
-  color: rgba(250, 243, 240, 0.75);
-  margin-bottom: 2.5rem;
-}
-
-.titulo-livro {
-  font-family: var(--fonte-titulo);
-  font-size: clamp(2.2rem, 4.2vw, 4rem);
-  font-weight: 900;
-  color: var(--creme);
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  word-wrap: break-word;
-  margin-bottom: 0;
-}
-
-.subtitulo {
-  display: block;
-  font-family: var(--fonte-ui);
-  font-weight: 400;
-  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
-  letter-spacing: 0.4em;
-  color: var(--dourado);
-  margin-top: 1.5rem;
-}
-
-.divisor-ouro {
-  width: 40px;
-  height: 2px;
-  background-color: var(--dourado);
-  margin: 2.5rem auto;
-}
-
-.assinatura-autora {
-  font-family: var(--fonte-autora);
-  font-size: 2.8rem;
-  color: var(--dourado);
-  opacity: 0.95;
-}
-
-/* ─── LADO DIREITO (SUMÁRIO COMPLETO) ────────────────── */
-.capa-direita {
-  background: var(--branco);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 4rem 3.5rem;
-}
-
-.sumario h2 {
-  font-family: var(--fonte-ui);
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--terracota);
-  margin-bottom: 2rem;
-}
-
-.sumario ol {
-  list-style: none;
-  counter-reset: item;
-}
-
-.sumario li {
-  border-bottom: 1px solid rgba(155,35,53,0.1);
-}
-
-.sumario li:not(.sem-numero) {
-  counter-increment: item;
-}
-
-.sumario li a {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 0.75rem 0;
-  text-decoration: none;
-  color: var(--carvao);
-  font-family: var(--fonte-corpo);
-  font-size: 0.9rem;
-  transition: color 0.2s;
-}
-
-.sumario li:not(.sem-numero) a::before {
-  content: counter(item, decimal-leading-zero);
-  font-family: var(--fonte-ui);
-  font-size: 0.65rem;
-  font-weight: 300;
-  color: var(--vinho);
-  min-width: 1.8rem;
-  letter-spacing: 0.05em;
-}
-
-.sumario li.sem-numero a::before { content: ''; min-width: 1.8rem; }
-
-.sumario li a:hover { color: var(--vinho); }
-
-/* ─── PÁGINAS DOS CAPÍTULOS ──────────────────────────── */
-.capitulo {
-  max-width: var(--max-largura);
-  margin: 0 auto;
-  padding: 5rem 2rem 6rem;
-  position: relative;
-}
-
-.capitulo::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse at 0% 50%, var(--vinheta) 0%, transparent 55%),
-    radial-gradient(ellipse at 100% 50%, var(--vinheta) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 0%, var(--vinheta) 0%, transparent 40%),
-    radial-gradient(ellipse at 50% 100%, var(--vinheta) 0%, transparent 40%);
-  z-index: 0;
-}
-
-.capitulo > * { position: relative; z-index: 1; }
-
-.capitulo-numero {
-  font-family: var(--fonte-ui);
-  font-size: 0.65rem;
-  font-weight: 300;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--terracota);
-  margin-bottom: 0.5rem;
-}
-
-.capitulo-titulo {
-  font-family: var(--fonte-titulo);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  font-weight: 700;
-  color: var(--vinho);
-  line-height: 1.15;
-  margin-bottom: 1rem;
-}
-
-.icone-capitulo {
-  display: block;
-  width: 56px;
-  height: 56px;
-  margin: 2rem 0 2.5rem;
-  color: var(--vinho);
-  opacity: 0.75;
-}
-
-.epigrafe {
-  font-family: var(--fonte-corpo);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--terracota);
-  border-left: 2px solid var(--vinho);
-  padding: 0.5rem 0 0.5rem 1.4rem;
-  margin: 2rem 0 2.5rem;
-  line-height: 1.6;
-}
-
-.capitulo p { font-size: 1rem; margin-bottom: 1.4rem; color: var(--carvao); }
-.capitulo h2 { font-family: var(--fonte-sub); font-size: 1.25rem; color: var(--vinho); margin: 2.5rem 0 1rem; padding-bottom: 0.3rem; border-bottom: 1px solid rgba(155,35,53,0.2); }
-.capitulo h3 { font-family: var(--fonte-sub); font-style: italic; font-size: 1.05rem; color: var(--carmim); margin: 2rem 0 0.8rem; }
-.capitulo ul, .capitulo ol { padding-left: 1.4rem; margin-bottom: 1.4rem; }
-.capitulo li { margin-bottom: 0.5rem; font-size: 1rem; }
-.capitulo ul li::marker { color: var(--vinho); }
-
-.aviso-emergencia {
-  background: rgba(155, 35, 53, 0.06);
-  border-left: 3px solid var(--vinho);
-  padding: 0.8rem 1.2rem;
-  font-size: 0.9rem;
-  color: var(--vinho);
-  margin: 2rem 0;
-  font-family: var(--fonte-ui);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-}
-
-.divisor {
-  display: flex; align-items: center; gap: 1rem; margin: 3rem 0; color: var(--vinho); opacity: 0.4;
-}
-.divisor::before, .divisor::after { content: ''; flex: 1; height: 1px; background: var(--vinho); }
-
-.navegacao {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid rgba(155,35,53,0.15);
-}
-.navegacao a {
-  font-family: var(--fonte-ui); font-size: 0.78rem; font-weight: 300;
-  letter-spacing: 0.12em; text-transform: uppercase; color: var(--vinho);
-  text-decoration: none; transition: opacity 0.2s;
-}
-.navegacao a:hover { opacity: 0.6; }
-
-/* ─── RESPONSIVO (MOBILE) ────────────────────────────── */
 @media (max-width: 768px) {
   .capa { grid-template-columns: 1fr; }
-  
-  .capa-esquerda { 
-    position: relative; 
-    height: auto;
-    min-height: 100vh;
-    min-height: 100svh;
-  }
-
-  .predio-esq, .predio-dir {
-    top: 45%; /* Diminui a altura dos prédios no celular */
-  }
-
-  .silhueta-protagonista {
-    right: 0%;
-    width: 200px;
-    height: 40vh;
-  }
-
-  .textos-capa { max-width: 95%; }
-  .titulo-livro { font-size: clamp(1.8rem, 8.5vw, 2.5rem); }
-  .subtitulo { font-size: 0.8rem; letter-spacing: 0.3em; }
-  .assinatura-autora { font-size: 2.3rem; }
-
-  .capa-direita { padding: 4rem 1.5rem; }
-  .capitulo { padding: 3rem 1.2rem 4rem; }
-  .capitulo::before { position: absolute; }
+  .capa-esquerda { height: auto; min-height: 80vh; }
 }
