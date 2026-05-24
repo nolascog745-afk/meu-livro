@@ -1,39 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400&family=Pinyon+Script&display=swap');
+/* ... (Mantenha o seu @import e Reset iniciais) ... */
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 18px; scroll-behavior: smooth; }
-body { font-family: 'Lora', serif; color: #121212; background: #FAF3F0; line-height: 1.85; }
+/* Animações */
+@keyframes piscar { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+@keyframes pulsar { 0%, 100% { transform: scale(1); opacity: 0.2; } 50% { transform: scale(1.1); opacity: 0.5; } }
 
-/* Grid e Layout */
-.capa { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
-.capa-esquerda { 
-  background: #070405; position: sticky; top: 0; height: 100vh;
-  display: flex; flex-direction: column; justify-content: center; align-items: center; 
-  text-align: center; padding: 3rem; overflow: hidden;
+.capa-esquerda { position: sticky; top: 0; height: 100vh; overflow: hidden; background: #070405; position: relative; }
+
+/* Fundo Animado */
+.fundo-noturno { position: absolute; inset: 0; z-index: 0; }
+
+/* Céu com estrelas */
+.ceu-estrelado { 
+  position: absolute; inset: 0; 
+  background: radial-gradient(white, transparent 1px) 0 0 / 50px 50px; 
+  animation: piscar 4s infinite; 
 }
 
-.cenario-pov { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-.canvas-cenario { width: 100%; height: 100%; object-fit: cover; }
-
-.textos-capa { position: relative; z-index: 10; color: #FAF3F0; width: 100%; max-width: 85%; }
-.titulo-livro { font-family: 'Fraunces', serif; font-size: clamp(2.5rem, 5vw, 4rem); text-transform: uppercase; line-height: 1; }
-.subtitulo { display: block; font-size: 0.35em; color: #B8975A; letter-spacing: 0.4em; margin-top: 1rem; }
-.tag-editorial { font-family: 'Inter', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(255,255,255,0.6); margin-bottom: 2rem; }
-.assinatura-autora { font-family: 'Pinyon Script', cursive; font-size: 2.8rem; color: #B8975A; margin-top: 2rem; }
-.divisor-ouro { width: 50px; height: 2px; background: #B8975A; margin: 2rem auto; }
-
-/* Sumário */
-.capa-direita { background: white; padding: 4rem; display: flex; flex-direction: column; justify-content: center; }
-.sumario h2 { font-family: 'Inter', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em; color: #C4737A; margin-bottom: 2rem; }
-.sumario ol { list-style: none; counter-reset: item; }
-.sumario li { border-bottom: 1px solid rgba(155,35,53,0.1); padding: 1rem 0; counter-increment: item; }
-.sumario li a { text-decoration: none; color: #121212; font-size: 0.95rem; display: flex; align-items: baseline; }
-.sumario li a::before { content: counter(item, decimal-leading-zero); font-size: 0.6rem; color: #9B2335; margin-right: 1rem; }
-.sumario li.sem-numero a::before { content: ''; }
-
-@media (max-width: 768px) {
-  .capa { grid-template-columns: 1fr; }
-  .capa-esquerda { position: relative; height: 80vh; }
-  .titulo-livro { font-size: 2.2rem; }
-  .capa-direita { padding: 2rem; }
+/* Aurora pulsante (a "luz turva") */
+.aurora-pulsante {
+  position: absolute; bottom: 20%; left: 10%; width: 80%; height: 40%;
+  background: radial-gradient(circle, #B8975A 0%, #9B2335 40%, transparent 70%);
+  filter: blur(80px);
+  animation: pulsar 6s infinite ease-in-out;
 }
+
+/* Silhueta da cidade */
+.cidade-silhueta {
+  position: absolute; bottom: 0; width: 100%; height: 25%;
+  background: linear-gradient(to top, #000 40%, transparent 100%);
+  /* Adicionei formas de prédios via box-shadow */
+  box-shadow: 10px 0 0 #050505, 50px -20px 0 #050505, 100px -50px 0 #050505, 150px -30px 0 #050505;
+}
+
+.textos-capa { position: relative; z-index: 10; color: white; text-align: center; }
+/* ... (Mantenha o resto das classes de texto que você já tinha) ... */
