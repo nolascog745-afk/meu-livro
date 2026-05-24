@@ -10,7 +10,7 @@
   --terracota:   #C4737A;
   --creme:       #FAF3F0;
   --branco:      #FFFFFF;
-  --carvao:      #2B2B2B;
+  --carvao:      #121212; /* Ajustado para um escuro mais profundo de noite */
   --dourado:     #B8975A;
   --vinheta:     rgba(155, 35, 53, 0.06);
 
@@ -35,6 +35,19 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ─── ANIMAÇÕES DO CENÁRIO ───────────────────────────── */
+@keyframes piscarEstrelas {
+  0% { opacity: 0.8; }
+  50% { opacity: 0.2; }
+  100% { opacity: 0.9; }
+}
+
+@keyframes pulsarAurora {
+  0% { transform: translateX(-50%) scale(1) translateY(0); opacity: 0.4; }
+  50% { transform: translateX(-50%) scale(1.15) translateY(-20px); opacity: 0.7; }
+  100% { transform: translateX(-50%) scale(1) translateY(0); opacity: 0.4; }
+}
+
 /* ─── CAPA E SUMÁRIO (PC) ────────────────────────────── */
 .capa {
   display: grid;
@@ -42,14 +55,14 @@ body {
 }
 
 .capa-esquerda {
-  background: var(--creme);
+  /* Fundo noturno que desce para um tom profundo de vinho */
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a0a0d 60%, var(--vinho) 150%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   
-  /* Configuração crucial para suportar a imagem gigante */
   position: sticky;
   top: 0;
   height: 100vh;
@@ -58,40 +71,91 @@ body {
   z-index: 1;
 }
 
-/* A Imagem Vetorial Gigante que ocupa a Capa Toda */
-.bg-ilustracao {
+/* ─── ESTRUTURA DO CENÁRIO ───────────────────────────── */
+.cenario-animado {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Faz o desenho se esticar cobrindo tudo */
   z-index: 0;
+  pointer-events: none;
 }
 
-/* Textura de ruído por cima da imagem para dar efeito de papel */
-.capa-esquerda::after {
+/* Estrelas (Geradas com CSS radial-gradient) */
+.ceu-estrelado {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(1.5px 1.5px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 140px 70px, rgba(255,255,255,0.8), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90px 140px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 260px 120px, rgba(255,255,255,0.6), rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  animation: piscarEstrelas 5s infinite alternate ease-in-out;
+  opacity: 0.7;
+}
+
+/* Camada extra de estrelas com movimento diferente */
+.ceu-estrelado::after {
   content: '';
   position: absolute;
   inset: 0;
-  opacity: 0.35;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
-  pointer-events: none;
-  z-index: 1;
+  background-image: 
+    radial-gradient(1px 1px at 50px 50px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 200px 180px, rgba(255,255,255,0.5), rgba(0,0,0,0));
+  background-size: 250px 250px;
+  animation: piscarEstrelas 7s infinite alternate-reverse ease-in-out;
 }
 
+/* A Aurora / Luz Ascendente */
+.aurora-dourada {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 60%;
+  background: radial-gradient(ellipse at bottom center, var(--dourado) 0%, var(--terracota) 30%, transparent 70%);
+  filter: blur(50px);
+  animation: pulsarAurora 8s infinite ease-in-out;
+  mix-blend-mode: screen;
+  z-index: 2;
+}
+
+/* A Cidade (Silhueta base) */
+.cidade-silhueta {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 28vh; /* Altura da cidade */
+  z-index: 3;
+}
+
+/* ─── TEXTOS DA CAPA (TEMA ESCURO) ───────────────────── */
 .textos-capa {
   position: relative;
-  z-index: 5; /* Garante que o texto fique sempre acima do desenho */
+  z-index: 10; /* Garante que os textos flutuem sobre as estrelas e a aurora */
   padding: 2rem;
+  margin-bottom: 5vh;
+}
+
+.tag-editorial {
+  font-family: var(--fonte-ui);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: rgba(250, 243, 240, 0.7); /* Creme suavizado */
+  margin-bottom: 2.5rem;
 }
 
 .titulo-livro {
   font-family: var(--fonte-titulo);
-  font-size: clamp(2.8rem, 4.5vw, 4rem);
+  font-size: clamp(2.8rem, 4.5vw, 4.2rem);
   font-weight: 900;
-  color: var(--carvao);
+  color: var(--creme); /* Branco creme brilhante contra a noite */
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -101,25 +165,25 @@ body {
 .subtitulo {
   display: block;
   font-family: var(--fonte-ui);
-  font-weight: 400;
+  font-weight: 300;
   font-size: clamp(0.9rem, 1.2vw, 1.1rem);
   letter-spacing: 0.4em;
-  color: var(--vinho);
-  margin-top: 1rem;
+  color: var(--dourado); /* Dourado brilhante */
+  margin-top: 1.5rem;
 }
 
 .divisor-ouro {
-  width: 50px;
+  width: 40px;
   height: 2px;
   background-color: var(--dourado);
-  margin: 2rem auto;
+  margin: 2.5rem auto;
 }
 
 .assinatura-autora {
   font-family: var(--fonte-autora);
   font-size: 2.8rem;
-  color: var(--vinho);
-  margin-top: 0;
+  color: var(--dourado); /* A assinatura vira ouro na nova narrativa */
+  opacity: 0.9;
 }
 
 /* ─── LADO DIREITO E RESTANTE DO SITE ────────────────── */
@@ -330,14 +394,22 @@ body {
   }
   
   .capa-esquerda { 
-    position: relative;
+    position: relative; /* Desliga o sticky no mobile */
     height: auto;
     min-height: 100vh;
     min-height: 100svh;
   }
 
+  .textos-capa {
+    margin-top: 0;
+  }
+
+  .cidade-silhueta {
+    height: 25vh; /* Ajuste suave da altura dos prédios no celular */
+  }
+
   .titulo-livro {
-    font-size: 2.8rem; 
+    font-size: 3rem; 
   }
 
   .subtitulo {
