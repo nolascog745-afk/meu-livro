@@ -13,53 +13,31 @@
 
     <div class="capa-esquerda">
       
-      <svg class="bg-ilustracao" viewBox="0 0 800 1200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <filter id="blur-heavy"><feGaussianBlur stdDeviation="80"/></filter>
-        </defs>
+      <div class="cenario-animado">
+        <div class="ceu-estrelado"></div>
         
-        <circle cx="100" cy="200" r="350" fill="rgba(196, 115, 122, 0.25)" filter="url(#blur-heavy)" />
-        <circle cx="700" cy="1000" r="450" fill="rgba(184, 151, 90, 0.15)" filter="url(#blur-heavy)" />
-        <circle cx="700" cy="100" r="300" fill="rgba(155, 35, 53, 0.1)" filter="url(#blur-heavy)" />
+        <div class="aurora-dourada"></div>
 
-        <g stroke="var(--vinho)" stroke-width="2" opacity="0.15">
-          <line x1="150" y1="0" x2="150" y2="1200" />
-          <line x1="650" y1="0" x2="650" y2="1200" />
-          <line x1="0" y1="300" x2="800" y2="300" />
-          <line x1="0" y1="900" x2="800" y2="900" />
-          <circle cx="150" cy="300" r="25" fill="none"/>
-          <circle cx="650" cy="900" r="25" fill="none"/>
-          <circle cx="150" cy="900" r="10" fill="none"/>
-          <circle cx="650" cy="300" r="10" fill="none"/>
-        </g>
-
-        <path d="M-100,400 C 200,600 300,100 900,400" stroke="var(--dourado)" stroke-width="3" fill="none" opacity="0.6" />
-        <path d="M-50,500 C 300,700 500,200 950,450" stroke="var(--dourado)" stroke-width="1.5" fill="none" opacity="0.4" />
-        <path d="M-100,1000 C 200,900 400,1100 900,800" stroke="var(--dourado)" stroke-width="2.5" fill="none" opacity="0.5" />
-
-        <g transform="translate(600, 150) rotate(35)" stroke="var(--carvao)" stroke-width="2.5" fill="none" opacity="0.7">
-          <path d="M0,0 C 80,-80 160,-30 180,80 C 80,110 30,30 0,0 Z" fill="rgba(255,255,255,0.4)"/>
-          <path d="M0,0 C 50,-120 120,-90 150,-20 C 30,20 -15,-45 0,0 Z" />
-          <path d="M0,0 L 150,20" opacity="0.5"/>
-        </g>
-
-        <g transform="translate(180, 1050) rotate(-145)" stroke="var(--carvao)" stroke-width="2.5" fill="none" opacity="0.75">
-          <path d="M0,0 C 100,-100 200,-50 220,100 C 100,130 50,50 0,0 Z" fill="rgba(250, 243, 240, 0.6)"/>
-          <path d="M0,0 C 60,-150 150,-120 180,-30 C 45,30 -30,-60 0,0 Z" />
-          <path d="M0,0 L 180,25" opacity="0.5"/>
-          <circle cx="230" cy="50" r="6" fill="var(--carvao)"/>
-          <circle cx="255" cy="20" r="3" fill="var(--carvao)"/>
-        </g>
-
-        <g transform="translate(50, 600) rotate(15)" stroke="var(--vinho)" stroke-width="2" fill="none" opacity="0.5">
-           <path d="M0,0 C 50,-50 100,-25 110,50 C 50,65 25,25 0,0 Z" />
-           <path d="M0,0 L 100,10" />
-        </g>
-      </svg>
+        <svg class="cidade-silhueta" viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad-cidade-fundo" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#2b0f16" />
+              <stop offset="100%" stop-color="#0a0305" />
+            </linearGradient>
+            <linearGradient id="grad-cidade-frente" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#1a0a0d" />
+              <stop offset="100%" stop-color="#000000" />
+            </linearGradient>
+          </defs>
+          <path d="M0,200 L0,110 L40,110 L40,150 L90,150 L90,80 L140,80 L140,120 L200,120 L200,60 L260,60 L260,140 L320,140 L320,90 L380,90 L380,160 L450,160 L450,70 L520,70 L520,130 L580,130 L580,50 L650,50 L650,110 L720,110 L720,80 L790,80 L790,140 L850,140 L850,60 L920,60 L920,120 L1000,120 L1000,200 Z" fill="url(#grad-cidade-fundo)" opacity="0.7"/>
+          <path d="M0,200 L0,150 L60,150 L60,180 L120,180 L120,130 L180,130 L180,90 L240,90 L240,160 L300,160 L300,110 L360,110 L360,170 L420,170 L420,120 L480,120 L480,80 L540,80 L540,150 L600,150 L600,100 L670,100 L670,180 L740,180 L740,130 L800,130 L800,90 L880,90 L880,160 L950,160 L950,140 L1000,140 L1000,200 Z" fill="url(#grad-cidade-frente)"/>
+        </svg>
+      </div>
 
       <div class="textos-capa">
+        <p class="tag-editorial">Um guia sobre autonomia e realidade</p>
         <h1 class="titulo-livro">
-          Meretrício<br>
+          Meretrício
           <span class="subtitulo">Na Vida Real</span>
         </h1>
         <div class="divisor-ouro"></div>
