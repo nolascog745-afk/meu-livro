@@ -12,7 +12,6 @@
   <div class="capa">
     <div class="capa-esquerda">
 
-      <!-- Imagem de fundo gerada pelo Flux -->
       <div class="faixa-cidade">
         <img
           class="cidade-neon"
@@ -21,7 +20,6 @@
         />
       </div>
 
-      <!-- Camada SVG animada: estrelas + névoa -->
       <svg
         style="position:absolute;inset:0;width:100%;height:100%;z-index:5;pointer-events:none;"
         viewBox="0 0 600 900"
@@ -29,7 +27,6 @@
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-
           <radialGradient id="s-branco" cx=".5" cy=".5" r=".5">
             <stop offset="0%"  stop-color="#ffffff" stop-opacity="1"/>
             <stop offset="50%" stop-color="#ddeeff" stop-opacity="0.4"/>
@@ -50,58 +47,48 @@
             <stop offset="50%" stop-color="#ffd060" stop-opacity="0.4"/>
             <stop offset="100%" stop-color="#ffaa00" stop-opacity="0"/>
           </radialGradient>
-
           <radialGradient id="nev-1" cx=".5" cy=".5" r=".5">
-            <stop offset="0%"  stop-color="#2a0a3a" stop-opacity="0.35"/>
+            <stop offset="0%"  stop-color="#2a0a3a" stop-opacity="0.45"/>
             <stop offset="100%" stop-color="#1a0a2e" stop-opacity="0"/>
           </radialGradient>
           <radialGradient id="nev-2" cx=".5" cy=".5" r=".5">
-            <stop offset="0%"  stop-color="#0a1a3a" stop-opacity="0.28"/>
+            <stop offset="0%"  stop-color="#0a1a3a" stop-opacity="0.38"/>
             <stop offset="100%" stop-color="#050f20" stop-opacity="0"/>
           </radialGradient>
           <radialGradient id="nev-3" cx=".5" cy=".5" r=".5">
-            <stop offset="0%"  stop-color="#3a1020" stop-opacity="0.22"/>
+            <stop offset="0%"  stop-color="#3a1020" stop-opacity="0.32"/>
             <stop offset="100%" stop-color="#200818" stop-opacity="0"/>
           </radialGradient>
-
           <filter id="glow-s" x="-150%" y="-150%" width="400%" height="400%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="b"/>
             <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
-
-          <!-- Clip: corredor central de céu entre os prédios -->
           <clipPath id="clip-ceu-centro">
             <polygon points="180,0 420,0 420,260 300,320 180,260"/>
           </clipPath>
-
         </defs>
 
-        <!-- ===================== -->
-        <!-- NÉVOA ANIMADA         -->
-        <!-- ===================== -->
+        <!-- NÉVOA — pulsar aumentado -->
         <ellipse cx="150" cy="420" rx="220" ry="55" fill="url(#nev-1)">
           <animateTransform attributeName="transform" type="translate" values="0,0; 30,8; -10,4; 0,0" dur="18s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="0.7;1;0.5;0.8;0.7" dur="18s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.3;1;0.2;0.95;0.3" dur="18s" repeatCount="indefinite"/>
         </ellipse>
         <ellipse cx="420" cy="440" rx="200" ry="48" fill="url(#nev-2)">
           <animateTransform attributeName="transform" type="translate" values="0,0; -25,5; 15,-3; 0,0" dur="22s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="0.6;0.9;0.4;0.75;0.6" dur="22s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.2;1;0.15;0.9;0.2" dur="22s" repeatCount="indefinite"/>
         </ellipse>
         <ellipse cx="300" cy="460" rx="180" ry="40" fill="url(#nev-3)">
           <animateTransform attributeName="transform" type="translate" values="0,0; 10,-12; -8,6; 0,0" dur="26s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="0.5;0.85;0.4;0.7;0.5" dur="26s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.15;0.95;0.1;0.85;0.15" dur="26s" repeatCount="indefinite"/>
         </ellipse>
         <ellipse cx="300" cy="560" rx="280" ry="30" fill="url(#nev-2)">
           <animateTransform attributeName="transform" type="translate" values="0,0; 20,0; -15,0; 0,0" dur="30s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="0.4;0.7;0.3;0.55;0.4" dur="30s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.1;0.8;0.05;0.7;0.1" dur="30s" repeatCount="indefinite"/>
         </ellipse>
 
-        <!-- ===================== -->
-        <!-- ESTRELAS NO CORREDOR  -->
-        <!-- ===================== -->
+        <!-- ESTRELAS -->
         <g clip-path="url(#clip-ceu-centro)" filter="url(#glow-s)">
 
-          <!-- Centro topo -->
           <circle cx="300" cy="30" r="9" fill="url(#s-ouro)" opacity="0">
             <animate attributeName="opacity" values="0;0.45;0.1;0.5;0" dur="4.2s" repeatCount="indefinite" begin="0s"/>
           </circle>
@@ -109,12 +96,12 @@
             <animate attributeName="opacity" values="0.2;1;0.3;1;0.2" dur="4.2s" repeatCount="indefinite" begin="0s"/>
           </circle>
 
-          <!-- Linha 1 -->
-          <circle cx="210" cy="18" r="7" fill="url(#s-azul)" opacity="0"><animate attributeName="opacity" values="0;0.4;0" dur="5.1s" repeatCount="indefinite" begin="0.6s"/></circle>
-          <circle cx="210" cy="18" r="0.9" fill="#d8eaff"><animate attributeName="opacity" values="0.1;1;0.1" dur="5.1s" repeatCount="indefinite" begin="0.6s"/></circle>
+          <!-- Linha 1 — cx corrigidos para dentro do corredor -->
+          <circle cx="230" cy="18" r="7" fill="url(#s-azul)" opacity="0"><animate attributeName="opacity" values="0;0.4;0" dur="5.1s" repeatCount="indefinite" begin="0.6s"/></circle>
+          <circle cx="230" cy="18" r="0.9" fill="#d8eaff"><animate attributeName="opacity" values="0.1;1;0.1" dur="5.1s" repeatCount="indefinite" begin="0.6s"/></circle>
 
-          <circle cx="248" cy="10" r="6" fill="url(#s-lilas)" opacity="0"><animate attributeName="opacity" values="0;0.35;0" dur="4.7s" repeatCount="indefinite" begin="1.4s"/></circle>
-          <circle cx="248" cy="10" r="0.8" fill="#f0d8ff"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.7s" repeatCount="indefinite" begin="1.4s"/></circle>
+          <circle cx="258" cy="10" r="6" fill="url(#s-lilas)" opacity="0"><animate attributeName="opacity" values="0;0.35;0" dur="4.7s" repeatCount="indefinite" begin="1.4s"/></circle>
+          <circle cx="258" cy="10" r="0.8" fill="#f0d8ff"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.7s" repeatCount="indefinite" begin="1.4s"/></circle>
 
           <circle cx="352" cy="12" r="6" fill="url(#s-branco)" opacity="0"><animate attributeName="opacity" values="0;0.38;0" dur="3.9s" repeatCount="indefinite" begin="2.1s"/></circle>
           <circle cx="352" cy="12" r="0.9" fill="#fff"><animate attributeName="opacity" values="0.1;0.95;0.1" dur="3.9s" repeatCount="indefinite" begin="2.1s"/></circle>
@@ -122,9 +109,9 @@
           <circle cx="392" cy="20" r="7" fill="url(#s-azul)" opacity="0"><animate attributeName="opacity" values="0;0.4;0" dur="5.5s" repeatCount="indefinite" begin="0.9s"/></circle>
           <circle cx="392" cy="20" r="0.9" fill="#cce0ff"><animate attributeName="opacity" values="0.2;1;0.2" dur="5.5s" repeatCount="indefinite" begin="0.9s"/></circle>
 
-          <!-- Linha 2 -->
-          <circle cx="195" cy="55" r="6" fill="url(#s-lilas)" opacity="0"><animate attributeName="opacity" values="0;0.3;0" dur="6.2s" repeatCount="indefinite" begin="1.8s"/></circle>
-          <circle cx="195" cy="55" r="0.8" fill="#eeccff"><animate attributeName="opacity" values="0.15;0.9;0.15" dur="6.2s" repeatCount="indefinite" begin="1.8s"/></circle>
+          <!-- Linha 2 — cx corrigido -->
+          <circle cx="225" cy="55" r="6" fill="url(#s-lilas)" opacity="0"><animate attributeName="opacity" values="0;0.3;0" dur="6.2s" repeatCount="indefinite" begin="1.8s"/></circle>
+          <circle cx="225" cy="55" r="0.8" fill="#eeccff"><animate attributeName="opacity" values="0.15;0.9;0.15" dur="6.2s" repeatCount="indefinite" begin="1.8s"/></circle>
 
           <circle cx="265" cy="42" r="7" fill="url(#s-branco)" opacity="0"><animate attributeName="opacity" values="0;0.36;0" dur="4.4s" repeatCount="indefinite" begin="3.2s"/></circle>
           <circle cx="265" cy="42" r="1" fill="#fff"><animate attributeName="opacity" values="0.1;0.92;0.1" dur="4.4s" repeatCount="indefinite" begin="3.2s"/></circle>
@@ -135,9 +122,9 @@
           <circle cx="405" cy="50" r="7" fill="url(#s-lilas)" opacity="0"><animate attributeName="opacity" values="0;0.33;0" dur="4.0s" repeatCount="indefinite" begin="2.6s"/></circle>
           <circle cx="405" cy="50" r="0.9" fill="#f2ddff"><animate attributeName="opacity" values="0.2;0.9;0.2" dur="4.0s" repeatCount="indefinite" begin="2.6s"/></circle>
 
-          <!-- Linha 3 (rarefeita, mais baixa) -->
-          <circle cx="220" cy="95" r="5" fill="url(#s-azul)" opacity="0"><animate attributeName="opacity" values="0;0.26;0" dur="5.3s" repeatCount="indefinite" begin="2.9s"/></circle>
-          <circle cx="220" cy="95" r="0.7" fill="#ccd8ff"><animate attributeName="opacity" values="0.1;0.78;0.1" dur="5.3s" repeatCount="indefinite" begin="2.9s"/></circle>
+          <!-- Linha 3 -->
+          <circle cx="240" cy="95" r="5" fill="url(#s-azul)" opacity="0"><animate attributeName="opacity" values="0;0.26;0" dur="5.3s" repeatCount="indefinite" begin="2.9s"/></circle>
+          <circle cx="240" cy="95" r="0.7" fill="#ccd8ff"><animate attributeName="opacity" values="0.1;0.78;0.1" dur="5.3s" repeatCount="indefinite" begin="2.9s"/></circle>
 
           <circle cx="300" cy="80" r="6" fill="url(#s-branco)" opacity="0"><animate attributeName="opacity" values="0;0.28;0" dur="6.5s" repeatCount="indefinite" begin="4.1s"/></circle>
           <circle cx="300" cy="80" r="0.8" fill="#eef4ff"><animate attributeName="opacity" values="0.1;0.8;0.1" dur="6.5s" repeatCount="indefinite" begin="4.1s"/></circle>
@@ -145,9 +132,8 @@
           <circle cx="378" cy="92" r="5" fill="url(#s-lilas)" opacity="0"><animate attributeName="opacity" values="0;0.24;0" dur="4.9s" repeatCount="indefinite" begin="1.2s"/></circle>
           <circle cx="378" cy="92" r="0.7" fill="#e8d8ff"><animate attributeName="opacity" values="0.1;0.72;0.1" dur="4.9s" repeatCount="indefinite" begin="1.2s"/></circle>
 
-          <!-- Algumas estrelas baixas no vão entre prédios -->
-          <circle cx="255" cy="160" r="4" fill="url(#s-azul)" opacity="0"><animate attributeName="opacity" values="0;0.2;0" dur="5.6s" repeatCount="indefinite" begin="3.5s"/></circle>
-          <circle cx="255" cy="160" r="0.6" fill="#ccd8ff"><animate attributeName="opacity" values="0.1;0.65;0.1" dur="5.6s" repeatCount="indefinite" begin="3.5s"/></circle>
+          <circle cx="265" cy="160" r="4" fill="url(#s-azul)" opacity="0"><animate attributeName="opacity" values="0;0.2;0" dur="5.6s" repeatCount="indefinite" begin="3.5s"/></circle>
+          <circle cx="265" cy="160" r="0.6" fill="#ccd8ff"><animate attributeName="opacity" values="0.1;0.65;0.1" dur="5.6s" repeatCount="indefinite" begin="3.5s"/></circle>
 
           <circle cx="300" cy="150" r="5" fill="url(#s-branco)" opacity="0"><animate attributeName="opacity" values="0;0.22;0" dur="6.8s" repeatCount="indefinite" begin="0.7s"/></circle>
           <circle cx="300" cy="150" r="0.7" fill="#fff"><animate attributeName="opacity" values="0.1;0.7;0.1" dur="6.8s" repeatCount="indefinite" begin="0.7s"/></circle>
@@ -158,7 +144,6 @@
         </g>
       </svg>
 
-      <!-- Título e assinatura sobrepostos -->
       <div class="textos-capa">
         <h1 class="titulo-livro">Meretricío<span class="subtitulo">Na Vida Real</span></h1>
         <div class="divisor-ouro"></div>
