@@ -61,7 +61,25 @@ body {
   color: #FAF3F0;
   text-align: center;
   padding: 2rem;
+  /* backdrop blur no bloco inteiro */
   text-shadow: 0 2px 24px rgba(2, 5, 16, 0.85);
+}
+
+/* Painel flutuante com blur atrás do título */
+.textos-capa > * {
+  position: relative;
+}
+
+.bloco-titulo {
+  backdrop-filter: blur(10px) brightness(0.7);
+  -webkit-backdrop-filter: blur(10px) brightness(0.7);
+  background: rgba(4, 8, 24, 0.45);
+  border: 1px solid rgba(184, 151, 90, 0.18);
+  border-radius: 4px;
+  padding: 2.2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .titulo-livro {
@@ -397,6 +415,8 @@ body.pagina-capitulo { background: #FAF3F0; }
 
   .assinatura-autora { font-size: 2.2rem; }
 
+  .bloco-titulo { padding: 1.6rem 2rem; }
+
   .capa-direita { padding: 2.5rem 1.5rem 3rem; }
 
   .sumario li a {
@@ -465,6 +485,8 @@ body.pagina-capitulo { background: #FAF3F0; }
   .titulo-livro { font-size: 3.8rem; }
 
   .assinatura-autora { font-size: 3.2rem; }
+
+  .bloco-titulo { padding: 2.8rem 3.8rem; }
 
   .capa-direita { padding: 5rem; }
 
