@@ -149,9 +149,9 @@ body {
   min-width: 1.6rem;
 }
 
-/* .sem-numero: recuo via padding para alinhar com os capítulos */
-.sumario li.sem-numero a {
-  padding-left: calc(1.6rem + 1rem);
+/* .sem-numero: sem recuo, sem pseudo-elemento */
+.sumario li.sem-numero a::before {
+  display: none;
 }
 
 .sumario li a:hover { color: #9B2335; }
