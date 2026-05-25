@@ -154,6 +154,7 @@ body {
   font-size: 0.6rem;
   color: #9B2335;
   margin-right: 1rem;
+  flex-shrink: 0;
 }
 
 /* Itens sem número (ex: Agradecimentos) */
@@ -191,6 +192,7 @@ body {
   text-decoration: none;
   letter-spacing: 0.05em;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 
 .link-voltar:hover {
@@ -203,6 +205,7 @@ body {
   color: #FAF3F0;
   text-align: center;
   flex: 1;
+  padding: 0 0.5rem;
 }
 
 .cabecalho-livro__autora {
@@ -210,6 +213,7 @@ body {
   font-size: 1.4rem;
   color: #B8975A;
   text-align: right;
+  white-space: nowrap;
 }
 
 /* =========================
@@ -268,6 +272,8 @@ body {
   margin-bottom: 1.5rem;
   text-align: justify;
   hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
 }
 
 /* Listas */
@@ -325,6 +331,8 @@ body.pagina-capitulo {
   margin-bottom: 1.5rem;
   text-align: justify;
   hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
 }
 
 .texto-capitulo ul,
@@ -370,6 +378,7 @@ body.pagina-capitulo {
   text-decoration: none;
   letter-spacing: 0.03em;
   transition: color 0.2s;
+  padding: 0.5rem 0;
 }
 
 .navegacao a:hover,
@@ -399,10 +408,16 @@ body.pagina-capitulo {
 }
 
 /* =========================
-   RESPONSIVIDADE
+   RESPONSIVIDADE — MOBILE
    ========================= */
 
 @media (max-width: 768px) {
+
+  html {
+    font-size: 16px;
+  }
+
+  /* --- CAPA --- */
   .capa {
     grid-template-columns: 1fr;
   }
@@ -410,24 +425,68 @@ body.pagina-capitulo {
   .capa-esquerda {
     position: relative;
     height: auto;
-    min-height: 80vh;
-  }
-
-  .capa-direita {
-    padding: 2.5rem 1.5rem;
+    min-height: 70vh;
   }
 
   .faixa-ceu {
-    padding: 2.5rem 1.5rem;
+    flex: 0 0 auto;
+    padding: 3rem 1.5rem 2rem;
+  }
+
+  .textos-capa {
+    width: 100%;
   }
 
   .titulo-livro {
+    font-size: 2.8rem;
+  }
+
+  .assinatura-autora {
     font-size: 2.4rem;
   }
 
+  .faixa-cidade {
+    min-height: 220px;
+  }
+
+  .cidade-neon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .capa-direita {
+    padding: 2.5rem 1.5rem 3rem;
+  }
+
+  /* --- SUMÁRIO --- */
+  .sumario li a {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* --- CABEÇALHO INTERNO --- */
+  .cabecalho-livro {
+    padding: 0.75rem 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+
+  .cabecalho-livro__obra {
+    text-align: left;
+    flex: none;
+    font-size: 0.85rem;
+  }
+
+  .cabecalho-livro__autora {
+    font-size: 1.2rem;
+  }
+
+  /* --- CAPÍTULOS --- */
   .capitulo,
   .conteudo-capitulo {
-    padding: 3rem 1.25rem 4rem;
+    padding: 3rem 1.5rem 4rem;
   }
 
   .capitulo-titulo,
@@ -435,6 +494,17 @@ body.pagina-capitulo {
     font-size: 1.75rem;
   }
 
+  .capitulo-titulo::after,
+  .titulo-capitulo::after {
+    width: 36px;
+  }
+
+  .epigrafe {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  /* --- NAVEGAÇÃO --- */
   .navegacao,
   .navegacao-capitulos {
     flex-direction: column;
@@ -442,15 +512,46 @@ body.pagina-capitulo {
     gap: 0.75rem;
   }
 
-  .cabecalho-livro {
-    padding: 0.75rem 1.25rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
+  .navegacao a,
+  .navegacao-capitulos a,
+  .nav-link {
+    width: 100%;
+    display: block;
+    padding: 0.6rem 0;
+    font-size: 0.9rem;
   }
 
-  .cabecalho-livro__obra {
-    text-align: left;
-    flex: none;
+  /* --- AVISO EMERGÊNCIA --- */
+  .aviso-emergencia {
+    font-size: 0.85rem;
+    padding: 0.85rem 1rem;
+  }
+}
+
+/* =========================
+   RESPONSIVIDADE — TELAS GRANDES (PC)
+   ========================= */
+
+@media (min-width: 1400px) {
+  .capa {
+    grid-template-columns: 55% 45%;
+  }
+
+  .titulo-livro {
+    font-size: 3.8rem;
+  }
+
+  .assinatura-autora {
+    font-size: 3.2rem;
+  }
+
+  .capa-direita {
+    padding: 5rem;
+  }
+
+  .capitulo,
+  .conteudo-capitulo {
+    max-width: 720px;
+    padding: 6rem 2rem 7rem;
   }
 }
