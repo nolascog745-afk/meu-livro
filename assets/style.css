@@ -146,15 +146,12 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   letter-spacing: 0.05em;
+  min-width: 1.6rem;
 }
 
-/* .sem-numero: espaço reservado para alinhar texto com os capítulos */
-.sumario li.sem-numero a::before {
-  content: '';
-  display: inline-block;
-  width: 1.6rem;
-  margin-right: 1rem;
-  flex-shrink: 0;
+/* .sem-numero: recuo via padding para alinhar com os capítulos */
+.sumario li.sem-numero a {
+  padding-left: calc(1.6rem + 1rem);
 }
 
 .sumario li a:hover { color: #9B2335; }
