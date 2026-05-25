@@ -3,33 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Capítulo 10 – Sucesso Pessoal: A Construção da Autonomia</title>
+  <title>Capítulo 10 — Sucesso Pessoal</title>
   <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    .pagina { display: none; }
+    .pagina.ativa { display: block; }
+    .paginacao { display: flex; align-items: center; justify-content: space-between; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(155,35,53,0.15); gap: 1rem; }
+    .paginacao button { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 400; color: #9B2335; background: none; border: none; cursor: pointer; letter-spacing: 0.03em; transition: color 0.2s; padding: 0.5rem 0; }
+    .paginacao button:hover { color: #B8975A; }
+    .paginacao button:disabled { color: #ccc; cursor: default; }
+    .paginacao__indicador { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #888; letter-spacing: 0.08em; }
+    .nav-capitulos { display: flex; justify-content: space-between; margin-top: 1.5rem; }
+    .nav-capitulos a { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #9B2335; text-decoration: none; transition: color 0.2s; }
+    .nav-capitulos a:hover { color: #B8975A; }
+  </style>
 </head>
 <body>
   <article class="capitulo">
     <p class="capitulo-numero">Capítulo 10</p>
     <h1 class="capitulo-titulo">Sucesso Pessoal: A Construção da Autonomia</h1>
-    <blockquote class="epigrafe">"O sucesso é a soma de pequenos esforços repetidos dia após dia." — Robert Collier</blockquote>
 
-    <p>O sucesso pode ser visto de muitas formas. Para alguns, significa ter dinheiro; para outros, é sinônimo de saúde; e há quem acredite que sucesso é uma família unida. Cada um sente a realização de um jeito, pois ninguém realmente sabe o que traz felicidade genuína ao coração de outra pessoa.</p>
+    <section class="pagina ativa" id="pag-1">
+      <blockquote class="epigrafe">"A autonomia não é dada — é construída, dia após dia, escolha após escolha."</blockquote>
+      <p>Autonomia é o objetivo central de toda a jornada descrita neste livro. Não a autonomia como conceito abstrato, mas como realidade concreta: ter controle sobre seu tempo, suas finanças, suas decisões e seu futuro.</p>
+      <p>Construir autonomia exige planejamento. Isso significa estabelecer metas de saída — um valor guardado, uma habilidade desenvolvida, um negócio estruturado — e trabalhar ativamente em direção a elas, sem esperar que as condições perfeitas apareçam.</p>
+    </section>
 
-    <p>Para mim, o sucesso é poder me alimentar como gosto, compartilhar momentos com quem amo, ter saúde e os prazeres que a autonomia financeira pode proporcionar. Amar sem medo do arrependimento também é parte disso.</p>
+    <section class="pagina" id="pag-2">
+      <p>Invista em você. Cursos, certificações, idiomas, habilidades digitais — qualquer conhecimento adquirido é patrimônio que ninguém pode tomar. O mercado de trabalho formal e o empreendedorismo estão acessíveis para quem se prepara.</p>
+      <p>Sua história não é sua prisão. Muitas mulheres que passaram pelo trabalho sexual construíram trajetórias de enorme sucesso em áreas diversas. O que define o futuro não é o passado — são as escolhas que você faz a partir de agora.</p>
+      <p class="aviso-emergencia">Em caso de agressão, ameaça ou sequestro ligue <strong>190</strong> — Polícia do Brasil.</p>
+    </section>
 
-    <p>Aos 32 anos, considero-me uma mulher que alcançou seus objetivos. Ao longo de uma década nesta trajetória, busquei priorizar minha estabilidade e segurança, transformando meu esforço em conquistas pessoais e patrimoniais. Vim até aqui sozinha, sem apoio de pai, mãe ou irmãos. Tudo o que aprendi foi pela minha própria força e resiliência.</p>
-
-    <p>A jornada não foi fácil, mas posso afirmar que meu empenho em buscar uma vida melhor valeu a pena. O sucesso, para mim, é ser capaz de tomar minhas próprias decisões com autonomia, buscando uma vida digna, equilibrada e agindo com responsabilidade sobre o meu próprio destino.</p>
-
-    <p>Ser bem-sucedida significa viver de acordo com meus valores, superando adversidades e buscando crescimento pessoal e profissional de forma consciente. Ser bem-sucedida é encontrar forças para enfrentar barreiras e construir um futuro que traga satisfação com autonomia e liberdade.</p>
-
-    <p>No fim, o sucesso é uma jornada contínua de autodescoberta e desenvolvimento. Ao alinhar as ações com os valores individuais e cultivar resiliência e equilíbrio, é possível construir uma vida não só estável, mas também profundamente significativa e satisfatória.</p>
-
-    <blockquote class="epigrafe">Jesus é o caminho, a verdade e a vida!</blockquote>
-
-    <nav class="navegacao">
+    <div class="paginacao">
+      <button id="btn-anterior" onclick="mudarPagina(-1)" disabled>← Página anterior</button>
+      <span class="paginacao__indicador" id="indicador">Página 1 de 2</span>
+      <button id="btn-proximo" onclick="mudarPagina(1)">Página seguinte →</button>
+    </div>
+    <nav class="nav-capitulos">
       <a href="capitulo-09.html">← Capítulo 9</a>
       <a href="agradecimentos.html">Agradecimentos →</a>
     </nav>
   </article>
+  <script>
+    const paginas = document.querySelectorAll('.pagina');
+    const total = paginas.length;
+    let atual = 0;
+    function mudarPagina(dir) {
+      paginas[atual].classList.remove('ativa');
+      atual += dir;
+      paginas[atual].classList.add('ativa');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('indicador').textContent = `Página ${atual + 1} de ${total}`;
+      document.getElementById('btn-anterior').disabled = atual === 0;
+      document.getElementById('btn-proximo').disabled = atual === total - 1;
+    }
+  </script>
 </body>
 </html>
