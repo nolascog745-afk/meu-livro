@@ -5,42 +5,129 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Capítulo 1 – A Decisão: Clareza, Limites e Autocuidado</title>
   <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    .pagina { display: none; }
+    .pagina.ativa { display: block; }
+
+    .paginacao {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(155, 35, 53, 0.15);
+      gap: 1rem;
+    }
+
+    .paginacao button {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #9B2335;
+      background: none;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+      padding: 0.5rem 0;
+    }
+
+    .paginacao button:hover { color: #B8975A; }
+    .paginacao button:disabled { color: #ccc; cursor: default; }
+
+    .paginacao__indicador {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: #888;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-capitulos {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+    }
+
+    .nav-capitulos a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: #9B2335;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-capitulos a:hover { color: #B8975A; }
+  </style>
 </head>
 <body>
   <article class="capitulo">
     <p class="capitulo-numero">Capítulo 1</p>
     <h1 class="capitulo-titulo">A Decisão: Clareza, Limites e Autocuidado</h1>
-    <blockquote class="epigrafe">"A vida não examinada não vale a pena ser vivida." — Sócrates</blockquote>
 
-    <p>Relatos recorrentes indicam que a entrada no trabalho sexual, em muitos casos, está associada a dificuldades financeiras e à limitação de alternativas disponíveis. Situações de vulnerabilidade econômica podem levar pessoas a se depararem com propostas que entram em conflito com seus valores pessoais e seus limites pessoais.</p>
+    <!-- PÁGINA 1 -->
+    <section class="pagina ativa" id="pag-1">
+      <blockquote class="epigrafe">"A vida não examinada não vale a pena ser vivida." — Sócrates</blockquote>
 
-    <p>Reconhecer e respeitar os próprios limites é um aspecto central da preservação da saúde física e mental. Experiências vividas contra a própria vontade tendem a gerar impactos negativos que se manifestam ao longo do tempo, afetando o equilíbrio psicológico, as relações pessoais e a qualidade de vida.</p>
+      <p>Relatos recorrentes indicam que a entrada no trabalho sexual, em muitos casos, está associada a dificuldades financeiras e à limitação de alternativas disponíveis. Situações de vulnerabilidade econômica podem levar pessoas a se depararem com propostas que entram em conflito com seus valores pessoais e seus limites pessoais.</p>
 
-    <p>Estudos e relatos apontam que a exposição prolongada a situações de desconforto, coerção ou pressão pode contribuir para o desenvolvimento de quadros como sofrimento psíquico, transtornos emocionais, adoecimentos psicossomáticos e aumento da vulnerabilidade a problemas de saúde.</p>
+      <p>Reconhecer e respeitar os próprios limites é um aspecto central da preservação da saúde física e mental. Experiências vividas contra a própria vontade tendem a gerar impactos negativos que se manifestam ao longo do tempo, afetando o equilíbrio psicológico, as relações pessoais e a qualidade de vida.</p>
 
-    <p>Por isso, refletir sobre autocuidado, limites pessoais e acesso a redes de apoio é fundamental em qualquer contexto marcado por desigualdade, estigma e risco. A proteção da integridade física e emocional deve sempre ser tratada como prioridade.</p>
+      <p>Estudos e relatos apontam que a exposição prolongada a situações de desconforto, coerção ou pressão pode contribuir para o desenvolvimento de quadros como sofrimento psíquico, transtornos emocionais, adoecimentos psicosssomáticos e aumento da vulnerabilidade a problemas de saúde.</p>
+    </section>
 
-    <p>Fazer algo contra a sua vontade pode impactar diversas áreas da sua vida e causar problemas a longo prazo, como:</p>
-    <ul>
-      <li>Depressão</li>
-      <li>Claustrofobia</li>
-      <li>Doenças psicossomáticas</li>
-      <li>Doenças sexualmente transmissíveis</li>
-    </ul>
-    <p>E muito mais.</p>
+    <!-- PÁGINA 2 -->
+    <section class="pagina" id="pag-2">
+      <p>Por isso, refletir sobre autocuidado, limites pessoais e acesso a redes de apoio é fundamental em qualquer contexto marcado por desigualdade, estigma e risco. A proteção da integridade física e emocional deve sempre ser tratada como prioridade.</p>
 
-    <p>Relatos e estudos indicam que contextos marcados por vulnerabilidade econômica podem expor pessoas a dinâmicas financeiras instáveis, especialmente quando não há acesso prévio a informações adequadas ou redes de apoio. A relação com o dinheiro, nesses casos, tende a ser atravessada por pressões, expectativas e dificuldades de planejamento.</p>
+      <p>Fazer algo contra a sua vontade pode impactar diversas áreas da sua vida e causar problemas a longo prazo, como:</p>
+      <ul>
+        <li>Depressão</li>
+        <li>Claustrofobia</li>
+        <li>Doenças psicosssomáticas</li>
+        <li>Doenças sexualmente transmissíveis</li>
+      </ul>
+      <p>E muito mais.</p>
+    </section>
 
-    <p>A ausência de educação financeira e de suporte emocional pode agravar situações de estresse, ansiedade e insegurança, ampliando impactos negativos na vida pessoal e social. Por isso, discutir de forma crítica temas como planejamento, limites e autocuidado é relevante em qualquer realidade marcada por desigualdade e risco.</p>
+    <!-- PÁGINA 3 -->
+    <section class="pagina" id="pag-3">
+      <p>Relatos e estudos indicam que contextos marcados por vulnerabilidade econômica podem expor pessoas a dinâmicas financeiras instáveis, especialmente quando não há acesso prévio a informações adequadas ou redes de apoio. A relação com o dinheiro, nesses casos, tende a ser atravessada por pressões, expectativas e dificuldades de planejamento.</p>
 
-    <p>A preservação da segurança, da saúde emocional e do bem-estar deve sempre ocupar lugar central nessas reflexões.</p>
+      <p>A ausência de educação financeira e de suporte emocional pode agravar situações de estresse, ansiedade e insegurança, ampliando impactos negativos na vida pessoal e social. Por isso, discutir de forma crítica temas como planejamento, limites e autocuidado é relevante em qualquer realidade marcada por desigualdade e risco.</p>
 
-    <p class="aviso-emergencia">Em caso de agressão, ameaça ou sequestro ligue <strong>190</strong> — Polícia do Brasil.</p>
+      <p>A preservação da segurança, da saúde emocional e do bem-estar deve sempre ocupar lugar central nessas reflexões.</p>
 
-    <nav class="navegacao">
+      <p class="aviso-emergencia">Em caso de agressão, ameaça ou sequestro ligue <strong>190</strong> — Polícia do Brasil.</p>
+    </section>
+
+    <!-- CONTROLES DE PAGINAÇÃO -->
+    <div class="paginacao">
+      <button id="btn-anterior" onclick="mudarPagina(-1)" disabled>← Página anterior</button>
+      <span class="paginacao__indicador" id="indicador">Página 1 de 3</span>
+      <button id="btn-proximo" onclick="mudarPagina(1)">Página seguinte →</button>
+    </div>
+
+    <!-- NAVEGAÇÃO ENTRE CAPÍTULOS -->
+    <nav class="nav-capitulos">
       <a href="introducao.html">← Introdução</a>
       <a href="capitulo-02.html">Capítulo 2 →</a>
     </nav>
   </article>
+
+  <script>
+    const paginas = document.querySelectorAll('.pagina');
+    const total = paginas.length;
+    let atual = 0;
+
+    function mudarPagina(dir) {
+      paginas[atual].classList.remove('ativa');
+      atual += dir;
+      paginas[atual].classList.add('ativa');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('indicador').textContent = `Página ${atual + 1} de ${total}`;
+      document.getElementById('btn-anterior').disabled = atual === 0;
+      document.getElementById('btn-proximo').disabled = atual === total - 1;
+    }
+  </script>
 </body>
 </html>
