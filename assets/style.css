@@ -119,7 +119,6 @@ body {
   counter-reset: cap 0;
 }
 
-/* Apenas itens com classe .cap incrementam e exibem número */
 .sumario li.cap {
   counter-increment: cap;
 }
@@ -149,13 +148,9 @@ body {
   letter-spacing: 0.05em;
 }
 
-/* Itens sem número: recuo igual para alinhar o texto */
+/* .sem-numero: sem pseudo-elemento, texto começa na borda */
 .sumario li.sem-numero a::before {
-  content: '';
-  display: inline-block;
-  width: 1.6rem;
-  margin-right: 1rem;
-  flex-shrink: 0;
+  display: none;
 }
 
 .sumario li a:hover { color: #9B2335; }
