@@ -61,11 +61,9 @@ body {
   color: #FAF3F0;
   text-align: center;
   padding: 2rem;
-  /* backdrop blur no bloco inteiro */
   text-shadow: 0 2px 24px rgba(2, 5, 16, 0.85);
 }
 
-/* Painel flutuante com blur atrás do título */
 .textos-capa > * {
   position: relative;
 }
@@ -92,11 +90,11 @@ body {
 
 .subtitulo {
   display: block;
-  font-size: 0.4em;
-  color: #B8975A;
-  letter-spacing: 0.4em;
-  margin-top: 1rem;
-  text-shadow: 0 1px 12px rgba(2, 5, 16, 0.8);
+  font-size: 0.55em;
+  color: #D4AF6A;
+  letter-spacing: 0.25em;
+  margin-top: 0.9rem;
+  text-shadow: 0 1px 16px rgba(2, 5, 16, 0.6), 0 0 8px rgba(212, 175, 106, 0.3);
 }
 
 .divisor-ouro {
@@ -155,7 +153,6 @@ body {
   align-items: baseline;
 }
 
-/* Número apenas nos itens .cap */
 .sumario li.cap a::before {
   content: counter(cap, decimal-leading-zero);
   font-size: 0.6rem;
@@ -168,7 +165,6 @@ body {
   min-width: 1.6rem;
 }
 
-/* .sem-numero: sem recuo, sem pseudo-elemento */
 .sumario li.sem-numero a::before {
   display: none;
 }
