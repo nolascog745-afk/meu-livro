@@ -148,9 +148,13 @@ body {
   letter-spacing: 0.05em;
 }
 
-/* .sem-numero: sem pseudo-elemento, texto começa na borda */
+/* .sem-numero: espaço reservado para alinhar texto com os capítulos */
 .sumario li.sem-numero a::before {
-  display: none;
+  content: '';
+  display: inline-block;
+  width: 1.6rem;
+  margin-right: 1rem;
+  flex-shrink: 0;
 }
 
 .sumario li a:hover { color: #9B2335; }
