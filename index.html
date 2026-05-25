@@ -10,7 +10,7 @@
 <body>
 
   <div class="capa">
-    <!-- Lado esquerdo: capa visual (céu + cidade + título) -->
+    <!-- Lado esquerdo: capa visual (céu estrelado + cidade + título) -->
     <div class="capa-esquerda">
       <!-- Faixa de céu limpa com título -->
       <div class="faixa-ceu">
@@ -28,10 +28,10 @@
       <div class="faixa-cidade">
         <svg class="cidade-neon" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <!-- Céu noturno -->
+            <!-- Céu noturno profundo -->
             <linearGradient id="grad-ceu-noite" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#040716" />
-              <stop offset="40%" stop-color="#081131" />
+              <stop offset="0%" stop-color="#020510" />
+              <stop offset="40%" stop-color="#060e28" />
               <stop offset="100%" stop-color="#05060c" />
             </linearGradient>
 
@@ -46,10 +46,300 @@
               <stop offset="0%" stop-color="#ff8df2" stop-opacity="1" />
               <stop offset="100%" stop-color="#ff8df2" stop-opacity="0" />
             </radialGradient>
+
+            <!-- Brilho de estrela -->
+            <radialGradient id="grad-estrela" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+              <stop offset="60%" stop-color="#ccd6ff" stop-opacity="0.6" />
+              <stop offset="100%" stop-color="#8899ff" stop-opacity="0" />
+            </radialGradient>
+
+            <!-- Brilho de estrela rosada -->
+            <radialGradient id="grad-estrela-rosa" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+              <stop offset="60%" stop-color="#ffccf5" stop-opacity="0.6" />
+              <stop offset="100%" stop-color="#ff8df2" stop-opacity="0" />
+            </radialGradient>
+
+            <!-- Brilho de estrela dourada -->
+            <radialGradient id="grad-estrela-ouro" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+              <stop offset="60%" stop-color="#fff3cc" stop-opacity="0.6" />
+              <stop offset="100%" stop-color="#ffd36b" stop-opacity="0" />
+            </radialGradient>
           </defs>
 
           <!-- Céu -->
           <rect x="0" y="0" width="1200" height="500" fill="url(#grad-ceu-noite)" />
+
+          <!-- ========================
+               ESTRELAS PULSANTES
+               Cada estrela tem: círculo base (núcleo) + halo radial + animate de opacidade
+               Grupos por velocidade de pulsação para efeito gradiente natural
+               ======================== -->
+
+          <!-- Estrelas pequenas — pulso lento (3–5s) -->
+          <g>
+            <!-- cluster 1 -->
+            <circle cx="48" cy="22" r="1.2" fill="#fff">
+              <animate attributeName="opacity" values="0.2;1;0.2" dur="3.8s" repeatCount="indefinite" begin="0s" />
+            </circle>
+            <circle cx="48" cy="22" r="4" fill="url(#grad-estrela)" opacity="0.4">
+              <animate attributeName="opacity" values="0;0.4;0" dur="3.8s" repeatCount="indefinite" begin="0s" />
+            </circle>
+
+            <circle cx="112" cy="14" r="1" fill="#fff">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="4.2s" repeatCount="indefinite" begin="0.6s" />
+            </circle>
+            <circle cx="112" cy="14" r="3.5" fill="url(#grad-estrela-rosa)" opacity="0.35">
+              <animate attributeName="opacity" values="0;0.35;0" dur="4.2s" repeatCount="indefinite" begin="0.6s" />
+            </circle>
+
+            <circle cx="195" cy="28" r="1.4" fill="#fff">
+              <animate attributeName="opacity" values="0.15;0.9;0.15" dur="5.1s" repeatCount="indefinite" begin="1.2s" />
+            </circle>
+            <circle cx="195" cy="28" r="5" fill="url(#grad-estrela)" opacity="0.3">
+              <animate attributeName="opacity" values="0;0.3;0" dur="5.1s" repeatCount="indefinite" begin="1.2s" />
+            </circle>
+
+            <circle cx="270" cy="10" r="0.9" fill="#fff">
+              <animate attributeName="opacity" values="0.4;1;0.4" dur="3.5s" repeatCount="indefinite" begin="0.3s" />
+            </circle>
+            <circle cx="270" cy="10" r="3" fill="url(#grad-estrela-ouro)" opacity="0.4">
+              <animate attributeName="opacity" values="0;0.4;0" dur="3.5s" repeatCount="indefinite" begin="0.3s" />
+            </circle>
+
+            <circle cx="340" cy="32" r="1.1" fill="#fff">
+              <animate attributeName="opacity" values="0.2;0.95;0.2" dur="4.7s" repeatCount="indefinite" begin="2.1s" />
+            </circle>
+            <circle cx="340" cy="32" r="4" fill="url(#grad-estrela-rosa)" opacity="0.35">
+              <animate attributeName="opacity" values="0;0.35;0" dur="4.7s" repeatCount="indefinite" begin="2.1s" />
+            </circle>
+
+            <circle cx="420" cy="18" r="1.3" fill="#fff">
+              <animate attributeName="opacity" values="0.1;1;0.1" dur="3.9s" repeatCount="indefinite" begin="0.9s" />
+            </circle>
+            <circle cx="420" cy="18" r="4.5" fill="url(#grad-estrela)" opacity="0.3">
+              <animate attributeName="opacity" values="0;0.3;0" dur="3.9s" repeatCount="indefinite" begin="0.9s" />
+            </circle>
+
+            <circle cx="500" cy="8" r="0.8" fill="#fff">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="5.5s" repeatCount="indefinite" begin="1.7s" />
+            </circle>
+            <circle cx="500" cy="8" r="3" fill="url(#grad-estrela-ouro)" opacity="0.4">
+              <animate attributeName="opacity" values="0;0.4;0" dur="5.5s" repeatCount="indefinite" begin="1.7s" />
+            </circle>
+
+            <circle cx="575" cy="25" r="1.2" fill="#fff">
+              <animate attributeName="opacity" values="0.2;0.9;0.2" dur="4.3s" repeatCount="indefinite" begin="0.4s" />
+            </circle>
+            <circle cx="575" cy="25" r="4" fill="url(#grad-estrela-rosa)" opacity="0.35">
+              <animate attributeName="opacity" values="0;0.35;0" dur="4.3s" repeatCount="indefinite" begin="0.4s" />
+            </circle>
+
+            <circle cx="650" cy="12" r="1" fill="#fff">
+              <animate attributeName="opacity" values="0.4;1;0.4" dur="3.6s" repeatCount="indefinite" begin="2.5s" />
+            </circle>
+            <circle cx="650" cy="12" r="3.5" fill="url(#grad-estrela)" opacity="0.4">
+              <animate attributeName="opacity" values="0;0.4;0" dur="3.6s" repeatCount="indefinite" begin="2.5s" />
+            </circle>
+
+            <circle cx="730" cy="30" r="1.4" fill="#fff">
+              <animate attributeName="opacity" values="0.1;0.95;0.1" dur="4.9s" repeatCount="indefinite" begin="1.1s" />
+            </circle>
+            <circle cx="730" cy="30" r="5" fill="url(#grad-estrela-ouro)" opacity="0.3">
+              <animate attributeName="opacity" values="0;0.3;0" dur="4.9s" repeatCount="indefinite" begin="1.1s" />
+            </circle>
+
+            <circle cx="810" cy="16" r="0.9" fill="#fff">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="3.4s" repeatCount="indefinite" begin="0.7s" />
+            </circle>
+            <circle cx="810" cy="16" r="3" fill="url(#grad-estrela-rosa)" opacity="0.4">
+              <animate attributeName="opacity" values="0;0.4;0" dur="3.4s" repeatCount="indefinite" begin="0.7s" />
+            </circle>
+
+            <circle cx="890" cy="6" r="1.1" fill="#fff">
+              <animate attributeName="opacity" values="0.2;1;0.2" dur="5.2s" repeatCount="indefinite" begin="2.9s" />
+            </circle>
+            <circle cx="890" cy="6" r="4" fill="url(#grad-estrela)" opacity="0.35">
+              <animate attributeName="opacity" values="0;0.35;0" dur="5.2s" repeatCount="indefinite" begin="2.9s" />
+            </circle>
+
+            <circle cx="960" cy="24" r="1.3" fill="#fff">
+              <animate attributeName="opacity" values="0.15;0.9;0.15" dur="4.1s" repeatCount="indefinite" begin="1.5s" />
+            </circle>
+            <circle cx="960" cy="24" r="4.5" fill="url(#grad-estrela-ouro)" opacity="0.3">
+              <animate attributeName="opacity" values="0;0.3;0" dur="4.1s" repeatCount="indefinite" begin="1.5s" />
+            </circle>
+
+            <circle cx="1040" cy="11" r="1" fill="#fff">
+              <animate attributeName="opacity" values="0.4;1;0.4" dur="3.7s" repeatCount="indefinite" begin="0.2s" />
+            </circle>
+            <circle cx="1040" cy="11" r="3.5" fill="url(#grad-estrela-rosa)" opacity="0.4">
+              <animate attributeName="opacity" values="0;0.4;0" dur="3.7s" repeatCount="indefinite" begin="0.2s" />
+            </circle>
+
+            <circle cx="1120" cy="29" r="1.2" fill="#fff">
+              <animate attributeName="opacity" values="0.2;0.95;0.2" dur="4.6s" repeatCount="indefinite" begin="1.9s" />
+            </circle>
+            <circle cx="1120" cy="29" r="4" fill="url(#grad-estrela)" opacity="0.35">
+              <animate attributeName="opacity" values="0;0.35;0" dur="4.6s" repeatCount="indefinite" begin="1.9s" />
+            </circle>
+          </g>
+
+          <!-- Segunda fila de estrelas (altura média) — pulso médio -->
+          <g>
+            <circle cx="75" cy="52" r="1" fill="#fff">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="4.4s" repeatCount="indefinite" begin="1.3s" />
+            </circle>
+            <circle cx="75" cy="52" r="3.5" fill="url(#grad-estrela-rosa)" opacity="0.35">
+              <animate attributeName="opacity" values="0;0.35;0" dur="4.4s" repeatCount="indefinite" begin="1.3s" />
+            </circle>
+
+            <circle cx="158" cy="44" r="1.5" fill="#fff">
+              <animate attributeName="opacity" values="0.1;1;0.1" dur="3.3s" repeatCount="indefinite" begin="0.5s" />
+            </circle>
+            <circle cx="158" cy="44" r="5.5" fill="url(#grad-estrela-ouro)" opacity="0.35">
+              <animate attributeName="opacity" values="0;0.35;0" dur="3.3s" repeatCount="indefinite" begin="0.5s" />
+            </circle>
+
+            <circle cx="235" cy="60" r="0.8" fill="#fff">
+              <animate attributeName="opacity" values="0.4;1;0.4" dur="5.0s" repeatCount="indefinite" begin="2.2s" />
+            </circle>
+            <circle cx="235" cy="60" r="3" fill="url(#grad-estrela)" opacity="0.4">
+              <animate attributeName="opacity" values="0;0.4;0" dur="5.0s" repeatCount="indefinite" begin="2.2s" />
+            </circle>
+
+            <circle cx="310" cy="48" r="1.2" fill="#fff">
+              <animate attributeName="opacity" values="0.2;0.9;0.2" dur="4.8s" repeatCount="indefinite" begin="0.8s" />
+            </circle>
+            <circle cx="310" cy="48" r="4" fill="url(#grad-estrela-rosa)" opacity="0.3">
+              <animate attributeName="opacity" values="0;0.3;0" dur="4.8s" repeatCount="indefinite" begin="0.8s" />
+            </circle>
+
+            <circle cx="388" cy="65" r="1" fill="#fff">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="3.6s" repeatCount="indefinite" begin="1.6s" />
+            </circle>
+            <circle cx="388" cy="65" r="3.5" fill="url(#grad-estrela-ouro)" opacity="0.35">
+              <animate attributeName="opacity" values="0;0.35;0" dur="3.6s" repeatCount="indefinite" begin="1.6s" />
+            </circle>
+
+            <circle cx="462" cy="42" r="1.4" fill="#fff">
+              <animate attributeName="opacity" values="0.15;0.95;0.15" dur="4.5s" repeatCount="indefinite" begin="2.8s" />
+            </circle>
+            <circle cx="462" cy="42" r="5" fill="url(#grad-estrela)" opacity="0.3">
+              <animate attributeName="opacity" values="0;0.3;0" dur="4.5s" repeatCount="indefinite" begin="2.8s" />
+            </circle>
+
+            <circle cx="538" cy="58" r="0.9" fill="#fff">
+              <animate attributeName="opacity" values="0.4;1;0.4" dur="3.8s" repeatCount="indefinite" begin="0.1s" />
+            </circle>
+            <circle cx="538" cy="58" r="3" fill="url(#grad-estrela-rosa)" opacity="0.4">
+              <animate attributeName="opacity" values="0;0.4;0" dur="3.8s" repeatCount="indefinite" begin="0.1s" />
+            </circle>
+
+            <circle cx="615" cy="45" r="1.3" fill="#fff">
+              <animate attributeName="opacity" values="0.2;1;0.2" dur="5.3s" repeatCount="indefinite" begin="2.4s" />
+            </circle>
+            <circle cx="615" cy="45" r="4.5" fill="url(#grad-estrela-ouro)" opacity="0.3">
+              <animate attributeName="opacity" values="0;0.3;0" dur="5.3s" repeatCount="indefinite" begin="2.4s" />
+            </circle>
+
+            <circle cx="692" cy="62" r="1.1" fill="#fff">
+              <animate attributeName="opacity" values="0.3;0.95;0.3" dur="4.0s" repeatCount="indefinite" begin="1.0s" />
+            </circle>
+            <circle cx="692" cy="62" r="4" fill="url(#grad-estrela)" opacity="0.35">
+              <animate attributeName="opacity" values="0;0.35;0" dur="4.0s" repeatCount="indefinite" begin="1.0s" />
+            </circle>
+
+            <circle cx="768" cy="50" r="1" fill="#fff">
+              <animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" repeatCount="indefinite" begin="3.1s" />
+            </circle>
+            <circle cx="768" cy="50" r="3.5" fill="url(#grad-estrela-rosa)" opacity="0.4">
+              <animate attributeName="opacity" values="0;0.4;0" dur="3.5s" repeatCount="indefinite" begin="3.1s" />
+            </circle>
+
+            <circle cx="845" cy="38" r="1.5" fill="#fff">
+              <animate attributeName="opacity" values="0.1;1;0.1" dur="4.7s" repeatCount="indefinite" begin="0.4s" />
+            </circle>
+            <circle cx="845" cy="38" r="5.5" fill="url(#grad-estrela-ouro)" opacity="0.3">
+              <animate attributeName="opacity" values="0;0.3;0" dur="4.7s" repeatCount="indefinite" begin="0.4s" />
+            </circle>
+
+            <circle cx="920" cy="55" r="0.8" fill="#fff">
+              <animate attributeName="opacity" values="0.4;1;0.4" dur="3.9s" repeatCount="indefinite" begin="2.0s" />
+            </circle>
+            <circle cx="920" cy="55" r="3" fill="url(#grad-estrela)" opacity="0.4">
+              <animate attributeName="opacity" values="0;0.4;0" dur="3.9s" repeatCount="indefinite" begin="2.0s" />
+            </circle>
+
+            <circle cx="998" cy="43" r="1.2" fill="#fff">
+              <animate attributeName="opacity" values="0.2;0.9;0.2" dur="5.1s" repeatCount="indefinite" begin="1.4s" />
+            </circle>
+            <circle cx="998" cy="43" r="4" fill="url(#grad-estrela-rosa)" opacity="0.35">
+              <animate attributeName="opacity" values="0;0.35;0" dur="5.1s" repeatCount="indefinite" begin="1.4s" />
+            </circle>
+
+            <circle cx="1075" cy="60" r="1.1" fill="#fff">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="4.2s" repeatCount="indefinite" begin="0.6s" />
+            </circle>
+            <circle cx="1075" cy="60" r="4" fill="url(#grad-estrela-ouro)" opacity="0.35">
+              <animate attributeName="opacity" values="0;0.35;0" dur="4.2s" repeatCount="indefinite" begin="0.6s" />
+            </circle>
+
+            <circle cx="1152" cy="47" r="1.3" fill="#fff">
+              <animate attributeName="opacity" values="0.1;0.95;0.1" dur="3.7s" repeatCount="indefinite" begin="2.7s" />
+            </circle>
+            <circle cx="1152" cy="47" r="4.5" fill="url(#grad-estrela)" opacity="0.3">
+              <animate attributeName="opacity" values="0;0.3;0" dur="3.7s" repeatCount="indefinite" begin="2.7s" />
+            </circle>
+          </g>
+
+          <!-- Estrelas especiais brilhantes (grandes, douradas/rosa) -->
+          <g>
+            <!-- Estrela grande rosa — destaque superior esquerdo -->
+            <circle cx="88" cy="35" r="2" fill="#fff">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="2.8s" repeatCount="indefinite" begin="0s" />
+            </circle>
+            <circle cx="88" cy="35" r="8" fill="url(#grad-estrela-rosa)" opacity="0.5">
+              <animate attributeName="opacity" values="0;0.5;0" dur="2.8s" repeatCount="indefinite" begin="0s" />
+            </circle>
+            <!-- Cruz de brilho horizontal -->
+            <rect x="85" cy="34.5" y="34.5" width="6" height="1" fill="white" opacity="0.6" rx="0.5">
+              <animate attributeName="opacity" values="0;0.6;0" dur="2.8s" repeatCount="indefinite" begin="0s" />
+            </rect>
+            <rect x="87.5" y="32" width="1" height="6" fill="white" opacity="0.6" rx="0.5">
+              <animate attributeName="opacity" values="0;0.6;0" dur="2.8s" repeatCount="indefinite" begin="0s" />
+            </rect>
+
+            <!-- Estrela grande dourada — centro superior -->
+            <circle cx="598" cy="35" r="2.2" fill="#fff">
+              <animate attributeName="opacity" values="0.2;1;0.2" dur="3.2s" repeatCount="indefinite" begin="1.4s" />
+            </circle>
+            <circle cx="598" cy="35" r="9" fill="url(#grad-estrela-ouro)" opacity="0.5">
+              <animate attributeName="opacity" values="0;0.5;0" dur="3.2s" repeatCount="indefinite" begin="1.4s" />
+            </circle>
+            <rect x="594" y="34.5" width="8" height="1" fill="white" opacity="0.6" rx="0.5">
+              <animate attributeName="opacity" values="0;0.6;0" dur="3.2s" repeatCount="indefinite" begin="1.4s" />
+            </rect>
+            <rect x="597.5" y="31" width="1" height="8" fill="white" opacity="0.6" rx="0.5">
+              <animate attributeName="opacity" values="0;0.6;0" dur="3.2s" repeatCount="indefinite" begin="1.4s" />
+            </rect>
+
+            <!-- Estrela grande azulada — direito -->
+            <circle cx="1100" cy="38" r="2" fill="#fff">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="2.6s" repeatCount="indefinite" begin="0.8s" />
+            </circle>
+            <circle cx="1100" cy="38" r="8" fill="url(#grad-estrela)" opacity="0.5">
+              <animate attributeName="opacity" values="0;0.5;0" dur="2.6s" repeatCount="indefinite" begin="0.8s" />
+            </circle>
+            <rect x="1096" y="37.5" width="8" height="1" fill="white" opacity="0.6" rx="0.5">
+              <animate attributeName="opacity" values="0;0.6;0" dur="2.6s" repeatCount="indefinite" begin="0.8s" />
+            </rect>
+            <rect x="1099.5" y="34" width="1" height="8" fill="white" opacity="0.6" rx="0.5">
+              <animate attributeName="opacity" values="0;0.6;0" dur="2.6s" repeatCount="indefinite" begin="0.8s" />
+            </rect>
+          </g>
 
           <!-- Névoa no horizonte -->
           <rect x="0" y="260" width="1200" height="140" fill="#6a8bff" opacity="0.16" />
@@ -104,37 +394,31 @@
 
           <!-- Janelas neon -->
           <g fill="url(#grad-janela)" opacity="0.9">
-            <!-- prédio 1 -->
             <rect x="20"  y="190" width="8" height="14" />
             <rect x="35"  y="210" width="8" height="14" />
             <rect x="50"  y="230" width="8" height="14" />
             <rect x="65"  y="250" width="8" height="14" />
             <rect x="80"  y="270" width="8" height="14" />
-            <!-- prédio 2 -->
             <rect x="145" y="200" width="8" height="14" />
             <rect x="160" y="220" width="8" height="14" />
             <rect x="175" y="240" width="8" height="14" />
             <rect x="190" y="260" width="8" height="14" />
             <rect x="205" y="280" width="8" height="14" />
-            <!-- prédio 3 -->
             <rect x="290" y="210" width="8" height="14" />
             <rect x="305" y="230" width="8" height="14" />
             <rect x="320" y="250" width="8" height="14" />
             <rect x="335" y="270" width="8" height="14" />
             <rect x="350" y="290" width="8" height="14" />
-            <!-- prédio 4 -->
             <rect x="470" y="215" width="8" height="14" />
             <rect x="485" y="235" width="8" height="14" />
             <rect x="500" y="255" width="8" height="14" />
             <rect x="515" y="275" width="8" height="14" />
             <rect x="530" y="295" width="8" height="14" />
-            <!-- prédio 5 -->
             <rect x="720" y="220" width="8" height="14" />
             <rect x="735" y="240" width="8" height="14" />
             <rect x="750" y="260" width="8" height="14" />
             <rect x="765" y="280" width="8" height="14" />
             <rect x="780" y="300" width="8" height="14" />
-            <!-- prédio 6 -->
             <rect x="890" y="220" width="8" height="14" />
             <rect x="905" y="240" width="8" height="14" />
             <rect x="920" y="260" width="8" height="14" />
